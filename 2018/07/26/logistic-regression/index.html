@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="classification," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
+<meta name="keywords" content="classification">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic Regression">
+<meta property="og:url" content="http://zyzhang.top/2018/07/26/logistic-regression/index.html">
+<meta property="og:site_name" content="Zhiyi&#39;s Blog">
+<meta property="og:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_10_0.png">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_14_0.png">
+<meta property="og:updated_time" content="2018-07-30T12:45:33.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Logistic Regression">
+<meta name="twitter:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
+<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_10_0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zyzhang.top/2018/07/26/logistic-regression/"/>
+
+
+
+
+
+  <title>Logistic Regression | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhiyi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2018/07/26/logistic-regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhiyi Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Logistic Regression</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-26T17:25:34+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">MachineLearning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/Classification/" itemprop="url" rel="index">
+                    <span itemprop="name">Classification</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Logistics-Regression"><a href="#Logistics-Regression" class="headerlink" title="Logistics Regression"></a>Logistics Regression</h1><p>Logistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。<strong>sigmoid</strong> 便是我们通常采用的一种预测函数：</p>
+<script type="math/tex; mode=display">
+y = \frac{1}{1+e^(-z)}</script><center>
+![jpg](logistic-regression/sigmoid.jpg)
+</center>
+
+<p>这里的 z 为线性回归函数 $ \textbf{w}^T \textbf{x} + b $</p>
+<p>因此 sigmoid 函数可变化为：</p>
+<script type="math/tex; mode=display">
+ln\frac{y}{1-y} = \textbf{w}^T \textbf{x} + b</script><p>$\frac{y}{1-y}$ 称为几率（将 y 看作分类为正例的概率，则 (1-y) 为分类为负例的概率），取对数便得到对数几率函数。可以看出，该式子实质上是在用线性回归模型的预测值去逼近分类真实标记的对率。</p>
+<p>接下来的任务就是求取对数几率函数的最优解。首先我们需要确定式中的参数 $\textbf{w}$ 和 b，通常采取的方法是<strong>极大似然法</strong>。</p>
+<p>我们将 y 视作类后验概率估计 p(y=1|x)，那么上式可以重新写为：</p>
+<script type="math/tex; mode=display">
+ln \frac{p(y=1 | x)}{p(y=0 | x)} = \textbf{w}^T \textbf{x} + b</script><p>假设 $\textbf{w} = ({\theta}<em>1, {\theta}_2, \cdots, {\theta}_m) $，$h</em>{\theta} = \textbf{w}^T \textbf{x} + b$，则有：</p>
+<script type="math/tex; mode=display">
+p(y=1 | x; \theta) = h_{\theta} (x)</script><script type="math/tex; mode=display">
+p(y=0 | x; \theta) = 1 - h_{\theta} (x)</script><p>合并得：</p>
+<script type="math/tex; mode=display">
+p(y | x; \theta) = (h_{\theta} (x))^y * (1-h_{\theta} {(x))^{1-y}</script><p>取对数似然函数：</p>
+<script type="math/tex; mode=display">
+lnL{\theta} = \sum_{i=1}^m y_i lnh_{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i))</script><p>最后通过<strong>梯度上升 (gradient ascent)</strong> 更新参数，求得其最优解：</p>
+<script type="math/tex; mode=display">
+{\theta}_j = {\theta}_j + \frac{\partial{lnL(\theta)}}{\partial{\theta j}}</script><center>
+![jpg](logistic-regression/equation1.jpg)
+</center>
+
+<p>具体实现如下：</p>
+<center>
+![jpg](logistic-regression/equation2.jpg)
+</center>
+
+
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>In[1]:</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+
+<p>首先载入一个包含n个实例的简单数据集, 每个实例的格式为 {x1 x2 label}， label取值仅为 0,1，为二分类：</p>
+<p>In[2]:</p>
+<pre><code>def loadDataset(filepath):
+    dataMat = []
+    labelMat = []
+    with open(filepath) as data:
+        for line in data.readlines():
+            arr = line.strip().split()
+            dataMat.append([1.0, float(arr[0]), float(arr[1])])  # 增加了一列值为1的属性，方便后面矩阵运算
+            labelMat.append(int(arr[2]))
+    return dataMat, labelMat
+</code></pre>
+
+<p>定义预测函数：</p>
+<p>In[3]:</p>
+<pre><code>def sigmoid(z):
+    '''
+    sigmoid 函数
+    Args:
+        z: 线性回归模型的预测值
+    Return: 
+        sigmoid函数预测值
+    '''
+    return 1.0 / (1 + np.exp(-z))
+</code></pre>
+
+<p>接下来定义梯度上升法更新权重 （此处为全局定步长梯度，即批量梯度上升）</p>
+<p>In[4]:</p>
+<pre><code>def gradAscent(data, labels, alpha=0.001, maxIter=500):
+    '''
+    Args:
+        data: 包含 n-d 特征的数据集
+        labels: 标签集
+        alpha: 步长(学习率)
+        maxIter: 最大迭代次数
+    Return:
+        weights: 权重
+    '''
+    dataMat = np.mat(data)
+    labelMat = np.mat(labels).transpose()  # 将label矩阵转置为列向量
+    m, n = np.shape(dataMat)
+    weights = np.ones((n, 1))  # 初始化权重矩阵（全零）
+    for i in range(maxIter):
+        y = sigmoid(dataMat*weights)  # 实质上是用线性回归模型的预测值逼近真实值的对数几率
+        error = (labelMat - y)
+        weights += alpha*dataMat.transpose()*error
+    return weights
+</code></pre>
+
+<p>In[5]:</p>
+<pre><code>dataMat, labelMat = loadDataset('./dataset/testSet.txt')
+weights = gradAscent(dataMat, labelMat)
+weights
+</code></pre>
+
+
+
+<p>Out[5]:</p>
+<pre><code>array([[ 4.12414349],
+       [ 0.48007329],
+       [-0.6168482 ]])
+</code></pre><p>下面对分类决策边界进行可视化</p>
+<p>In[6]:</p>
+<pre><code>def plotBestFit(weights):
+    dataMat, labelMat = loadDataset('./dataset/testSet.txt')
+    dataArr = np.array(dataMat)
+    labelMat = np.array(labelMat)
+    m = np.shape(dataArr)[0]
+    xcord1 = []
+    ycord1 = []
+    xcord2 = []
+    ycord2 = []
+    for i in range(m):
+        if int(labelMat[i]) == 1:
+            xcord1.append(dataArr[i, 1])
+            ycord1.append(dataArr[i, 2])
+        else:
+            xcord2.append(dataArr[i, 1])
+            ycord2.append(dataArr[i, 2])
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(xcord1, ycord1, s=20, c='dodgerblue', marker='s')
+    ax.scatter(xcord2, ycord2, s=20, c='green')
+    # 最佳拟合直线：1*w0 + w1*x1 + w2*x2 = 0
+    # z = 0 时，预测值大于 0.5 为正例，反之为负例
+    # 横轴为 x1, 纵轴为x2
+    x = np.arange(-3.0, 3.0, 0.1)
+    y = (-weights[0] - weights[1]*x) / weights[2]
+    ax.plot(x, y.T)
+    plt.xlabel('X1')
+    plt.ylabel('X2')
+    plt.show()
+</code></pre>
+
+<p>In[7]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/26/logistic-regression/logistic-regression_10_0.png" alt="png"></p>
+<p>上面的梯度上升法每次读取一整个数据集来更新权重，当数据集过大时非常耗费计算资源,收敛过程也可能振荡。因此通常采取一种随机梯度上升法，每次随机选取一个batch的数据计算梯度并更新权重</p>
+<p>In[8]:</p>
+<pre><code>def stocGradAscent(data, labels, maxIter=150):
+    '''
+    随机梯度上升（每次迭代随机选取一个instance）
+    Args:
+        data: 包含 n-d 特征的数据集
+        labels: 标签集
+        maxIter: 最大迭代次数（以保证快速收敛）
+    Returns:
+        weights: 更新的权重
+    '''
+    data = np.mat(data)
+    labesl = np.mat(labels).T
+    m, n = np.shape(data)
+    weights = np.ones((n,1))
+    for i in range(maxIter):
+        dataIndex = list(range(m))
+        for j in range(m):
+            # 使学习率随迭代次数增大而减小
+            alpha = 4 / (1.0 + i + j) + 0.001
+            # 随机选取一个实例计算梯度
+            randIndex = int(np.random.uniform(0, len(dataIndex)))
+            y = sigmoid(np.sum(data[randIndex] * weights))
+            error = labels[randIndex] - y
+            weights = weights + alpha * error * data[randIndex].T
+            del(dataIndex[randIndex])
+    return weights
+</code></pre>
+
+<p>In[9]:</p>
+<pre><code>
+dataMat, labelMat = loadDataset('./dataset/testSet.txt')
+weights = stocGradAscent(dataMat, labelMat)
+weights
+</code></pre>
+
+
+<p>Out[9]:</p>
+<pre><code>matrix([[14.03021096],
+        [ 1.0348258 ],
+        [-2.03087127]])
+</code></pre><p>In[10]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/26/logistic-regression/logistic-regression_14_0.png" alt="png"></p>
+<h1 id="Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic"><a href="#Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic" class="headerlink" title="Example: using logistic regression to estimate horse fatalities from colic"></a>Example: using logistic regression to estimate horse fatalities from colic</h1><p>下面是一个小例子，利用对率回归预测得疝气的马是否会死亡。数据集共 368 个 instances，每个 instance 为 28 维特征向量</p>
+<p>首先我们需要对数据集进行预处理，主要是对缺失值的处理。通常有以下几种方式填补缺失值：</p>
+<ul>
+<li>取特征均值</li>
+<li>取特殊值，例如 -1</li>
+<li>忽略属性值缺失的实例</li>
+<li>取相似items的均值</li>
+<li>利用其他的ML算法预测缺失值</li>
+</ul>
+<p>这里采用的方法是填补特殊值 0，使得该项对应的权重系数不做更新。且通过 sigmoid 函数我们知道 z=0 时 输出值为 0.5，所以填充 0 值不会使预测结果偏倚</p>
+<p>In[11]:</p>
+<pre><code>def classify(x, weights):
+    '''
+    二分类，以0.5为界
+    Args:
+        x: n-d 数据
+        weights: 权重
+    Return：
+        分类结果（正负）
+
+    '''
+    prob = sigmoid(np.sum(x * weights))
+    if prob > 0.5:
+        return 1.0
+    else:
+        return 0.0
+</code></pre>
+
+<p>In[12]:</p>
+<pre><code>def colicTest():
+    trainingSet = []
+    trainingLabels = []
+    # 训练
+    with open('./dataset/horseColicTraining.txt') as data_train:
+        for line in data_train.readlines():
+            arr = line.strip().split('\t')
+            arr = list(map(float, arr))
+            trainingSet.append(arr[:-1])
+            # 每行最后一个为label
+            trainingLabels.append(arr[-1])
+    trainWeights = stocGradAscent(np.array(trainingSet), trainingLabels, 500)
+    # 验证
+    errorCount = 0
+    numTest = 0
+    with open('./dataset/horseColicTest.txt') as data_test:
+        for line in data_test.readlines():
+            numTest += 1.0
+            arr = line.strip().split('\t')
+            arr = list(map(float, arr))
+            testSet = arr[:-1]
+            testLabel = arr[-1]
+            if int(classify(testSet, trainWeights)) != int(testLabel):
+                errorCount += 1
+    errorRate = float(errorCount / numTest)
+    print('the error rate is : %f' % errorRate)
+    return errorRate
+</code></pre>
+
+<p>In[13]:</p>
+<pre><code>def multiTest():
+    # 10次测试求错误率均值
+    num = 10
+    errorSum = 0.0
+    for i in range(num):
+        errorSum += colicTest()
+    print('after %d iterations the mean error rate is %f' % (num, errorSum / float(num) ))
+</code></pre>
+
+<p>In[14]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiTest()</span><br></pre></td></tr></table></figure>
+<p>Out[14]:</p>
+<pre><code>the error rate is : 0.373134
+the error rate is : 0.417910
+the error rate is : 0.253731
+the error rate is : 0.298507
+the error rate is : 0.373134
+the error rate is : 0.373134
+the error rate is : 0.283582
+the error rate is : 0.268657
+the error rate is : 0.388060
+the error rate is : 0.298507
+after 10 iterations the mean error rate is 0.332836
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/classification/" rel="tag"><i class="fa fa-tag"></i> classification</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/essay1/" rel="next" title="灵魂总是要贪片刻灿烂">
+                <i class="fa fa-chevron-left"></i> 灵魂总是要贪片刻灿烂
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/me.jpg"
+                alt="Zhiyi Zhang" />
+            
+              <p class="site-author-name" itemprop="name">Zhiyi Zhang</p>
+              <p class="site-description motion-element" itemprop="description">love all, trust a few, do wrong to none</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/setezzy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="zhyzhang@whu.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-email"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/roodozy" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistics-Regression"><span class="nav-number">1.</span> <span class="nav-text">Logistics Regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Demo"><span class="nav-number">2.</span> <span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic"><span class="nav-number">3.</span> <span class="nav-text">Example: using logistic regression to estimate horse fatalities from colic</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhiyi Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+<span class="post-meta-divider">|</span>
+
+<span id="busuanzi_container_site_uv">
+  Total visited <span id="busuanzi_value_site_uv"></span> times
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
