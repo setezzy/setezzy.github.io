@@ -93,7 +93,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_10_0.png">
 <meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_14_0.png">
-<meta property="og:updated_time" content="2018-07-30T12:45:33.757Z">
+<meta property="og:updated_time" content="2018-07-30T12:54:28.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
@@ -362,7 +362,7 @@
       
         <h1 id="Logistics-Regression"><a href="#Logistics-Regression" class="headerlink" title="Logistics Regression"></a>Logistics Regression</h1><p>Logistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。<strong>sigmoid</strong> 便是我们通常采用的一种预测函数：</p>
 <script type="math/tex; mode=display">
-y = \frac{1}{1+e^(-z)}</script><center>
+y = \frac{1}{1+e^{-z}}</script><center>
 ![jpg](logistic-regression/sigmoid.jpg)
 </center>
 
@@ -378,7 +378,7 @@ ln \frac{p(y=1 | x)}{p(y=0 | x)} = \textbf{w}^T \textbf{x} + b</script><p>假设
 p(y=1 | x; \theta) = h_{\theta} (x)</script><script type="math/tex; mode=display">
 p(y=0 | x; \theta) = 1 - h_{\theta} (x)</script><p>合并得：</p>
 <script type="math/tex; mode=display">
-p(y | x; \theta) = (h_{\theta} (x))^y * (1-h_{\theta} {(x))^{1-y}</script><p>取对数似然函数：</p>
+p(y | x; \theta) = {h_{\theta}(x)}^y  {1-h_{\theta}(x)}^{1-y}</script><p>取对数似然函数：</p>
 <script type="math/tex; mode=display">
 lnL{\theta} = \sum_{i=1}^m y_i lnh_{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i))</script><p>最后通过<strong>梯度上升 (gradient ascent)</strong> 更新参数，求得其最优解：</p>
 <script type="math/tex; mode=display">
