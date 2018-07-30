@@ -91,13 +91,16 @@
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
 <meta property="og:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/sigmoid.png">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/equation1.png">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/equation2.png">
 <meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_10_0.png">
 <meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_14_0.png">
-<meta property="og:updated_time" content="2018-07-30T13:44:03.320Z">
+<meta property="og:updated_time" content="2018-07-30T13:47:36.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
-<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_10_0.png">
+<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic_regression/sigmoid.png">
 
 
 
@@ -361,10 +364,7 @@
 
       
         <h1 id="Logistics-Regression"><a href="#Logistics-Regression" class="headerlink" title="Logistics Regression"></a>Logistics Regression</h1><p>Logistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。<strong>sigmoid</strong> 便是我们通常采用的一种预测函数：</p>
-<center>
-![](logistic_regression/sigmoid.png)
-</center>
-
+<p><img src="/2018/07/26/logistic_regression/sigmoid.png" alt=""></p>
 <p>其表达式为：</p>
 <script type="math/tex; mode=display">
 y = \frac{1}{1+e^{-z}}</script><p>这里的 z 为线性回归函数 $ \textbf{w}^T \textbf{x} + b $</p>
@@ -387,16 +387,9 @@ p(y | x; \theta) = {h_{\theta}(x)}^y ( {1-h_{\theta}(x)})^{1-y}</script><p>取�
 lnL{\theta} = \sum_{i=1}^m y_i lnh_{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i))</script><p>最后通过<strong>梯度上升 (gradient ascent)</strong> 更新参数求得其最优解：</p>
 <script type="math/tex; mode=display">
 {\theta}_j = {\theta}_j + \frac{\partial{lnL(\theta)}}{\partial{\theta j}}</script><p>求解过程如下：</p>
-<center>
-![png](logistic_regression/equation1.png)
-</center>
-
+<p><img src="/2018/07/26/logistic_regression/equation1.png" alt="png"></p>
 <p>采取梯度上升进行权重更新的具体实现如下：</p>
-<center>
-![png](logistic_regression/equation2.png)
-</center>
-
-
+<p><img src="/2018/07/26/logistic_regression/equation2.png" alt="png"></p>
 <h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>In[1]:</p>
 <pre><code>import numpy as np
 import matplotlib.pyplot as plt
