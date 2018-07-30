@@ -87,17 +87,17 @@
 <meta name="keywords" content="classification">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic Regression">
-<meta property="og:url" content="http://zyzhang.top/2018/07/26/logistic-regression/index.html">
+<meta property="og:url" content="http://zyzhang.top/2018/07/26/logistic_regression/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
 <meta property="og:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_10_0.png">
-<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_14_0.png">
-<meta property="og:updated_time" content="2018-07-30T12:54:28.021Z">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_14_0.png">
+<meta property="og:updated_time" content="2018-07-30T13:04:45.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
-<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic-regression/logistic-regression_10_0.png">
+<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://zyzhang.top/2018/07/26/logistic-regression/"/>
+  <link rel="canonical" href="http://zyzhang.top/2018/07/26/logistic_regression/"/>
 
 
 
@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2018/07/26/logistic-regression/">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2018/07/26/logistic_regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhiyi Zhang">
@@ -363,7 +363,7 @@
         <h1 id="Logistics-Regression"><a href="#Logistics-Regression" class="headerlink" title="Logistics Regression"></a>Logistics Regression</h1><p>Logistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。<strong>sigmoid</strong> 便是我们通常采用的一种预测函数：</p>
 <script type="math/tex; mode=display">
 y = \frac{1}{1+e^{-z}}</script><center>
-![jpg](logistic-regression/sigmoid.jpg)
+![](logistic_regression/sigmoid.png)
 </center>
 
 <p>这里的 z 为线性回归函数 $ \textbf{w}^T \textbf{x} + b $</p>
@@ -373,22 +373,22 @@ ln\frac{y}{1-y} = \textbf{w}^T \textbf{x} + b</script><p>$\frac{y}{1-y}$ 称为�
 <p>接下来的任务就是求取对数几率函数的最优解。首先我们需要确定式中的参数 $\textbf{w}$ 和 b，通常采取的方法是<strong>极大似然法</strong>。</p>
 <p>我们将 y 视作类后验概率估计 p(y=1|x)，那么上式可以重新写为：</p>
 <script type="math/tex; mode=display">
-ln \frac{p(y=1 | x)}{p(y=0 | x)} = \textbf{w}^T \textbf{x} + b</script><p>假设 $\textbf{w} = ({\theta}<em>1, {\theta}_2, \cdots, {\theta}_m) $，$h</em>{\theta} = \textbf{w}^T \textbf{x} + b$，则有：</p>
+ln \frac{p(y=1 | x)}{p(y=0 | x)} = \textbf{w}^T \textbf{x} + b</script><p>假设 $\textbf{w} = {\theta}<em>1, {\theta}_2, \cdots, {\theta}_m $，其中 $h</em>{\theta} = \textbf{w}^T \textbf{x} + b$，则有：</p>
 <script type="math/tex; mode=display">
 p(y=1 | x; \theta) = h_{\theta} (x)</script><script type="math/tex; mode=display">
 p(y=0 | x; \theta) = 1 - h_{\theta} (x)</script><p>合并得：</p>
 <script type="math/tex; mode=display">
-p(y | x; \theta) = {h_{\theta}(x)}^y  {1-h_{\theta}(x)}^{1-y}</script><p>取对数似然函数：</p>
+p(y | x; \theta) = {h_{\theta}(x)}^y ( {1-h_{\theta}(x)}^{1-y})</script><p>取对数似然函数：</p>
 <script type="math/tex; mode=display">
 lnL{\theta} = \sum_{i=1}^m y_i lnh_{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i))</script><p>最后通过<strong>梯度上升 (gradient ascent)</strong> 更新参数，求得其最优解：</p>
 <script type="math/tex; mode=display">
 {\theta}_j = {\theta}_j + \frac{\partial{lnL(\theta)}}{\partial{\theta j}}</script><center>
-![jpg](logistic-regression/equation1.jpg)
+![](logistic_regression/equation1.png)
 </center>
 
 <p>具体实现如下：</p>
 <center>
-![jpg](logistic-regression/equation2.jpg)
+![](logistic_regression/equation2.png)
 </center>
 
 
@@ -493,7 +493,7 @@ weights
 
 <p>In[7]:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/26/logistic-regression/logistic-regression_10_0.png" alt="png"></p>
+<p><img src="/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png" alt="png"></p>
 <p>上面的梯度上升法每次读取一整个数据集来更新权重，当数据集过大时非常耗费计算资源,收敛过程也可能振荡。因此通常采取一种随机梯度上升法，每次随机选取一个batch的数据计算梯度并更新权重</p>
 <p>In[8]:</p>
 <pre><code>def stocGradAscent(data, labels, maxIter=150):
@@ -538,7 +538,7 @@ weights
         [-2.03087127]])
 </code></pre><p>In[10]:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/26/logistic-regression/logistic-regression_14_0.png" alt="png"></p>
+<p><img src="/2018/07/26/logistic_regression/logistic-regression/logistic-regression_14_0.png" alt="png"></p>
 <h1 id="Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic"><a href="#Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic" class="headerlink" title="Example: using logistic regression to estimate horse fatalities from colic"></a>Example: using logistic regression to estimate horse fatalities from colic</h1><p>下面是一个小例子，利用对率回归预测得疝气的马是否会死亡。数据集共 368 个 instances，每个 instance 为 28 维特征向量</p>
 <p>首先我们需要对数据集进行预处理，主要是对缺失值的处理。通常有以下几种方式填补缺失值：</p>
 <ul>
