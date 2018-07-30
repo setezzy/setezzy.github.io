@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
 <meta property="og:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png">
-<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_14_0.png">
-<meta property="og:updated_time" content="2018-07-30T13:14:43.077Z">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_10_0.png">
+<meta property="og:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_14_0.png">
+<meta property="og:updated_time" content="2018-07-30T13:21:57.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="Logistics RegressionLogistic Regression 译作对数几率回归。虽然听上去是一种”回归”方法，实际却是一种分类学习方法。它在广义线性模型的基础上，用一个单调可微函数将分类任务的真实标记与线性回归模型的预测值联系起来。这个单调可微函数通常称作预测函数，理想函数为单位阶跃函数，而单位阶跃函数为离散函数，我们需要找到一个类似的连续函数。sigmoid 便是我们通常采用的">
-<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png">
+<meta name="twitter:image" content="http://zyzhang.top/2018/07/26/logistic_regression/logistic-regression_10_0.png">
 
 
 
@@ -375,23 +375,18 @@ ln\frac{y}{1-y} = \textbf{w}^T \textbf{x} + b</script><p>$\frac{y}{1-y}$ 称为�
 <script type="math/tex; mode=display">
 ln \frac{p(y=1 | x)}{p(y=0 | x)} = \textbf{w}^T \textbf{x} + b</script><p>假设 </p>
 <script type="math/tex; mode=display">
-\textbf{w} = \theta_1, \theta_2, \cdots, \theta_m</script><p>其中 </p>
+\textbf{w} = \[\theta_1, \theta_2, \cdots, \theta_m\]</script><p>其中 </p>
 <script type="math/tex; mode=display">
-h_{\theta} = \textbf{w}^T \textbf{x} + b
-$$，则有：</script><p>p(y=1 | x; \theta) = h_{\theta} (x)</p>
+h_{\theta} = \textbf{w}^T \textbf{x} + b</script><p>则有：</p>
 <script type="math/tex; mode=display">
-</script><p>p(y=0 | x; \theta) = 1 - h_{\theta} (x)</p>
+p(y=1 | x; \theta) = h_{\theta} (x)</script><script type="math/tex; mode=display">
+p(y=0 | x; \theta) = 1 - h_{\theta} (x)</script><p>合并得：</p>
 <script type="math/tex; mode=display">
-
-合并得：</script><p>p(y | x; \theta) = {h<em>{\theta}(x)}^y ( {1-h</em>{\theta}(x)})^{1-y}</p>
+p(y | x; \theta) = {h_{\theta}(x)}^y ( {1-h_{\theta}(x)})^{1-y}</script><p>取对数似然函数：</p>
 <script type="math/tex; mode=display">
-
-取对数似然函数：</script><p>lnL{\theta} = \sum<em>{i=1}^m y_i lnh</em>{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i)) </p>
+lnL{\theta} = \sum_{i=1}^m y_i lnh_{\theta} (x_i) + (1-y_i)ln(1-h\theta (x_i))</script><p>最后通过<strong>梯度上升 (gradient ascent)</strong> 更新参数，求得其最优解：</p>
 <script type="math/tex; mode=display">
-
-最后通过**梯度上升 (gradient ascent)** 更新参数，求得其最优解：</script><p>{\theta}_j = {\theta}_j + \frac{\partial{lnL(\theta)}}{\partial{\theta j}}</p>
-<p>$$</p>
-<center>
+{\theta}_j = {\theta}_j + \frac{\partial{lnL(\theta)}}{\partial{\theta j}}</script><center>
 ![](logistic_regression/equation1.png)
 </center>
 
@@ -502,7 +497,7 @@ weights
 
 <p>In[7]:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/26/logistic_regression/logistic-regression/logistic-regression_10_0.png" alt="png"></p>
+<p><img src="/2018/07/26/logistic_regression/logistic-regression_10_0.png" alt="png"></p>
 <p>上面的梯度上升法每次读取一整个数据集来更新权重，当数据集过大时非常耗费计算资源,收敛过程也可能振荡。因此通常采取一种随机梯度上升法，每次随机选取一个batch的数据计算梯度并更新权重</p>
 <p>In[8]:</p>
 <pre><code>def stocGradAscent(data, labels, maxIter=150):
@@ -547,7 +542,7 @@ weights
         [-2.03087127]])
 </code></pre><p>In[10]:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plotBestFit(weights)</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/07/26/logistic_regression/logistic-regression/logistic-regression_14_0.png" alt="png"></p>
+<p><img src="/2018/07/26/logistic_regression/logistic-regression_14_0.png" alt="png"></p>
 <h1 id="Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic"><a href="#Example-using-logistic-regression-to-estimate-horse-fatalities-from-colic" class="headerlink" title="Example: using logistic regression to estimate horse fatalities from colic"></a>Example: using logistic regression to estimate horse fatalities from colic</h1><p>下面是一个小例子，利用对率回归预测得疝气的马是否会死亡。数据集共 368 个 instances，每个 instance 为 28 维特征向量</p>
 <p>首先我们需要对数据集进行预处理，主要是对缺失值的处理。通常有以下几种方式填补缺失值：</p>
 <ul>
