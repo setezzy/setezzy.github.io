@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2018/07/31/hexo/</loc>
+    <lastmod>2018-07-31T07:15:43.552Z</lastmod>
+    <data>
+        <display>
+        <title>在 Hexo 中渲染 Latex 公式</title>
+        <pubTime>2018-07-31T07:14:14.322Z</pubTime>
+        
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2018/05/09/LeNet5/</loc>
     <lastmod>2018-07-31T05:57:16.243Z</lastmod>
     <data>
@@ -122,9 +142,9 @@
         <title>Ubuntu [firmware bug] 修复</title>
         <pubTime>2018-07-12T09:35:05.262Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>bug</tag>
+         
+        <tag>Ubuntu</tag>
          
          
            
@@ -167,9 +187,9 @@
         <title>Linux grub 修复</title>
         <pubTime>2018-03-17T15:23:44.299Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>bug</tag>
+         
+        <tag>Ubuntu</tag>
          
          
            

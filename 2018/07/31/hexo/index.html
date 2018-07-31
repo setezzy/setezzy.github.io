@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="bug," />
 
 
 
@@ -83,16 +83,18 @@
 
 
 
-<meta name="description" content="love all, trust a few, do wrong to none">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhiyi&#39;s Blog">
-<meta property="og:url" content="http://zyzhang.top/categories/DeepLearning/index.html">
+<meta name="description" content="这篇记录一下我在文章里增加 latex 公式时被自己作死的过程。 之前因为懒，没有在博客里手打公式，上一篇博客公式较多，所以还是需要用到 latex。我欢欢喜喜地打了一堆公式然后 hexo g ，然而报错了。Hexo 的 markdown 竟然不支持 latex 语法！看看人家 Jupyter Notebook 就很完美啊！随之我的折腾之路就开始了。 我先是按照网上大多教程写的，安装了 hexo-">
+<meta name="keywords" content="bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Hexo 中渲染 Latex 公式">
+<meta property="og:url" content="http://zyzhang.top/2018/07/31/hexo/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="love all, trust a few, do wrong to none">
+<meta property="og:description" content="这篇记录一下我在文章里增加 latex 公式时被自己作死的过程。 之前因为懒，没有在博客里手打公式，上一篇博客公式较多，所以还是需要用到 latex。我欢欢喜喜地打了一堆公式然后 hexo g ，然而报错了。Hexo 的 markdown 竟然不支持 latex 语法！看看人家 Jupyter Notebook 就很完美啊！随之我的折腾之路就开始了。 我先是按照网上大多教程写的，安装了 hexo-">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-07-31T07:15:43.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhiyi&#39;s Blog">
-<meta name="twitter:description" content="love all, trust a few, do wrong to none">
+<meta name="twitter:title" content="在 Hexo 中渲染 Latex 公式">
+<meta name="twitter:description" content="这篇记录一下我在文章里增加 latex 公式时被自己作死的过程。 之前因为懒，没有在博客里手打公式，上一篇博客公式较多，所以还是需要用到 latex。我欢欢喜喜地打了一堆公式然后 hexo g ，然而报错了。Hexo 的 markdown 竟然不支持 latex 语法！看看人家 Jupyter Notebook 就很完美啊！随之我的折腾之路就开始了。 我先是按照网上大多教程写的，安装了 hexo-">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://zyzhang.top/categories/DeepLearning/"/>
+  <link rel="canonical" href="http://zyzhang.top/2018/07/31/hexo/"/>
 
 
 
 
 
-  <title>Category: DeepLearning | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>在 Hexo 中渲染 Latex 公式 | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +149,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -241,111 +243,187 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>DeepLearning<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2018/07/31/hexo/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhiyi Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/12/augmentation/" itemprop="url">
-              
-                <span itemprop="name">基于Keras的数据增广实现</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">在 Hexo 中渲染 Latex 公式</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-12T15:08:06+08:00"
-              content="2018-07-12" >
-          07-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T15:14:14+08:00">
+                2018-07-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/" itemprop="url" rel="index">
+                    <span itemprop="name">Others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/09/LeNet5/" itemprop="url">
-              
-                <span itemprop="name">卷积神经网络 LeNet5 及 TensorFlow 实战</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-09T22:51:46+08:00"
-              content="2018-05-09" >
-          05-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>这篇记录一下我在文章里增加 latex 公式时被自己作死的过程。</p>
+<p>之前因为懒，没有在博客里手打公式，上一篇博客公式较多，所以还是需要用到 latex。我欢欢喜喜地打了一堆公式然后 <code>hexo g</code> ，然而报错了。Hexo 的 markdown 竟然不支持 latex 语法！看看人家 Jupyter Notebook 就很完美啊！随之我的折腾之路就开始了。</p>
+<p>我先是按照网上大多教程写的，安装了 <code>hexo-math</code>这个插件，和latex一样，行内公式用 <code>$$</code>，行间公式用 <code>$$ $$</code>。但还是报以下错误：</p>
+<pre><code>Template render error: (unknown path) [line xx,  column xx]
+  expected variable end
+</code></pre>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/01/tensorflow installation/" itemprop="url">
-              
-                <span itemprop="name">TensorFlow安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-01T22:06:18+08:00"
-              content="2018-03-01" >
-          03-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p>这种情况一般是文章里出现很多大括号，和 hexo 自带渲染引擎的语法冲突。我就开始奇怪，明明支持 latex 语法了怎么还有 bug。然后在 google 上搜了一通，尝试其他插件然后改配置文件都试过，最后反倒出现了其他的 bug，比如 <code>Error Deployer not found: git</code>，<code>Error Local hexo not found</code>，心态一度爆炸。</p>
+<p>最后我的一系列操作：</p>
+<ul>
+<li><p>将 Node.js 更新到了较新的稳定版本，删掉 node-modules 这个文件夹后重新 <code>npm install</code> （参考<a href="https://github.com/hexojs/hexo/issues/2076" target="_blank" rel="noopener">这里</a>）</p>
+</li>
+<li><p>更新其他 modules，例如 hexo-deployer-git （参考<a href="https://github.com/hexojs/hexo/issues/2757" target="_blank" rel="noopener">这里</a>）</p>
+</li>
+<li>hexo3 已经支持 mathjax，所以根本不用这么麻烦，只需要在 <code>_config.yml</code> 中将 mathjax enable 一下，再更改默认的渲染引擎就好了。<a href="https://www.jianshu.com/p/e8d433a2c5b7" target="_blank" rel="noopener">这篇博客</a>的步骤很详细，也不会踩坑。</li>
+<li>其实最重要的一步，就是检查 Markdown 里的公式本身有没有多打一个括号少一个括号。大括号太多也可能在 generate 这一步就报错。我就是疏忽了这个问题，最后发现是自己坑了自己，浪费了大笔时间。</li>
+</ul>
+<p>最后公式是渲染成功了，但是还存在一些问题。比如在 <code>$$ $$</code> 标记的公式下面插入图片时显示不出来，而且<code>&lt;center&gt;&lt;/center&gt;</code>命令也会让图片显示不出来。</p>
+<p>总之我的经验教训是，像这种 bug 一定要冷静对待，不然头脑一凌乱就要重头开始安装和配置。然后是多用 google ，百度emmm就算了。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/logistic_regression/" rel="next" title="Logistic Regression">
+                <i class="fa fa-chevron-left"></i> Logistic Regression
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -353,6 +431,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -601,6 +683,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
