@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2018/07/26/logistic_regression/</loc>
+    <lastmod>2018-07-31T07:40:28.981Z</lastmod>
+    <data>
+        <display>
+        <title>Logistic Regression</title>
+        <pubTime>2018-07-26T09:25:34.987Z</pubTime>
+        
+        <tag>classification</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
+          
+             
+              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2018/03/01/tensorflow%20installation/</loc>
     <lastmod>2018-07-31T07:26:27.481Z</lastmod>
     <data>
@@ -110,29 +133,6 @@
            
              
               <breadCrumb title="论文笔记" url="http://zyzhang.top/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2018/07/26/logistic_regression/</loc>
-    <lastmod>2018-07-30T13:47:36.812Z</lastmod>
-    <data>
-        <display>
-        <title>Logistic Regression</title>
-        <pubTime>2018-07-26T09:25:34.987Z</pubTime>
-        
-        <tag>classification</tag>
-         
-         
-           
-             
-              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
-          
-             
-              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>
