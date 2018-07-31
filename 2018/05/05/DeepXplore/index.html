@@ -91,10 +91,23 @@
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
 <meta property="og:description" content="这篇文章是 SOSP’17 的 best paper，贡献在于提出了第一个系统性的深度学习系统白盒测试框架，并提出了神经元覆盖率(neuron coverage)这一个测试度量标准。主要思路是根据 seed input 自动生成 test input，尽可能触发 DNN 产生不同/错误行为(erroneous behaviors)，同时最大化神经元覆盖率，这两者结合起来做联合优化。 论文见 Dee">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-30T06:25:48.825Z">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/decision.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/overview.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/nc.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/gradient.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/algorithm.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/example.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/a1.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/obj.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/a2.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/optimize.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/joint.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/05/DeepXplore/car.png">
+<meta property="og:updated_time" content="2018-07-31T05:55:19.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文笔记 - DeepXplore-Automated Whitebox Testing of DL Systems">
 <meta name="twitter:description" content="这篇文章是 SOSP’17 的 best paper，贡献在于提出了第一个系统性的深度学习系统白盒测试框架，并提出了神经元覆盖率(neuron coverage)这一个测试度量标准。主要思路是根据 seed input 自动生成 test input，尽可能触发 DNN 产生不同/错误行为(erroneous behaviors)，同时最大化神经元覆盖率，这两者结合起来做联合优化。 论文见 Dee">
+<meta name="twitter:image" content="http://zyzhang.top/2018/05/05/DeepXplore/decision.png">
 
 
 
@@ -363,15 +376,9 @@
 </li>
 </ul>
 <p>作者在文章中还提到了目前比较火的对抗样本 (adversarial samples) 生成技术，对抗样本虽然能使 DNN 出错，但用于测试时的局限性在于，添加的扰动必须是微小且不可见的，而且对抗样本只覆盖 DNN 大概50%的逻辑 (作者在实验部分将 DeepXplore 和 adversarial testing 做了比较)。 我个人认为本文方法的思想和FGSM 类似，都是基于梯度的方法，使 DNN 达到产生不同决策的临界点 (如下图)，多了对 neuron coverage 的考量。</p>
-<center>
-![](DeepXplore/decision.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/decision.png" alt=""></p>
 <p>因此，关键问题变成：怎样使生成的 test input 尽可能覆盖 DNN 的不同逻辑，从而揭示不同的错误行为；不采用人工标记的情况下，怎样判断错误行为。 作者给出的解决思路是：引入<strong>神经元覆盖率 (neuron coverage)</strong> 来度量 DL 系统的覆盖； 利用功能相似的多个 DNN 作交叉引证 （cross-referencing)，解决 DL 系统的 oracle 问题，避免人工检查。</p>
-<h1 id="Overview-of-DeepXplore"><a href="#Overview-of-DeepXplore" class="headerlink" title="Overview of DeepXplore"></a>Overview of DeepXplore</h1><center>
-![DeepXplore workflow](DeepXplore/overview.png)
-</center>
-
+<h1 id="Overview-of-DeepXplore"><a href="#Overview-of-DeepXplore" class="headerlink" title="Overview of DeepXplore"></a>Overview of DeepXplore</h1><p><img src="/2018/05/05/DeepXplore/overview.png" alt="DeepXplore workflow"></p>
 <p>首先来看一下 DeepXplore 这个框架的工作流：将一系列未标记的图片作为 seed input，输入到一些预训练的 DNN 中(这些 DNN 功能相似，例如对同一个 seed image，需给出相同的分类结果)；由于是预训练网络，参数都是固定的，所以作者将权重作为常量、input 作为变量，定义基于整个网络输出和基于隐藏层神经元输出的两种损失函数；采用梯度上升 (gradient ascent) 方法做联合优化，不断地调整 input 变量。注意在联合优化过程中，为保证产生的新测试输入是有效且符合真实场景的，该框架还引入了领域约束条件，例如只能调整图片的明暗度而不改变图片内容等等。DeepXplore核心内容包括：</p>
 <ul>
 <li>Maximizing differential behaviors</li>
@@ -384,57 +391,25 @@
 <p>We define neuron coverage of a set of test inputs as the ratio of the number of unique activated neurons for all test inputs and the total number of neurons in the DNN.</p>
 </blockquote>
 <p>神经元覆盖率是本文的重要概念，也就是被激活的神经元数目占总神经元数目的比例。若考虑一组测试输入， 那么计算覆盖率时只考虑被唯一激活的神经元。公式如下 (懒得手打公式了，直接贴图)：</p>
-<center>
-![Neuron coverage](DeepXplore/nc.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/nc.png" alt="Neuron coverage"></p>
 <p>(n 表示一个神经元，N 为神经元总数，x 为 test input, t 为判断神经元是否激活的阈值)</p>
 <p>每个神经元倾向于独立提取输入的特定特征（见原文参考文献 [58，87])，即每个神经元学习到的是不同的 rules，作者认为这是把神经元覆盖率作为 testing metric 的一个很好的解释。</p>
 <h2 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h2><p>梯度这个概念大家都很熟悉了，直接给出公式：</p>
-<center>
-![Gradient](DeepXplore/gradient.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/gradient.png" alt="Gradient"></p>
 <h1 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h1><p>下面给出了 DeepXplore 的核心算法，后面会按上文提到的四个模块分别介绍</p>
-<center>
-![algorithm](DeepXplore/algorithm.png)
-</center>
-
-
+<p><img src="/2018/05/05/DeepXplore/algorithm.png" alt="algorithm"></p>
 <h2 id="Maximazing-differential-behaviors"><a href="#Maximazing-differential-behaviors" class="headerlink" title="Maximazing differential behaviors"></a>Maximazing differential behaviors</h2><p>对于任意一个输入 x 和多个 DNN，该模块目的是生成的新的测试输入 x’ ，x’ 使至少一个 DNN 产生不同的预测结果。用下面的图作为例子，对原始输入进行变换后的新输入使两个功能相似的 DNN 产生了不同的分类结果：</p>
-<center>
-![example](DeepXplore/example.png)
-</center>
-
-<center>
-![](DeepXplore/a1.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/example.png" alt="example"></p>
+<p><img src="/2018/05/05/DeepXplore/a1.png" alt=""></p>
 <p>我们看算法的 23-29 行：从 DNNs 中随机选择一个目标 DNN (Fj)，分别计算 Fj 和 剩余 DNNs 将 x 分类为 c 的置信度，返回如下的目标函数 (λ1是预定义的平衡参数)：</p>
-<center>
-![example](DeepXplore/obj.png)
-</center>
-
-
+<p><img src="/2018/05/05/DeepXplore/obj.png" alt="example"></p>
 <h2 id="Maximazing-neuron-coverage"><a href="#Maximazing-neuron-coverage" class="headerlink" title="Maximazing neuron coverage"></a>Maximazing neuron coverage</h2><p>见算法的 30-35 行，最大化神经元覆盖率的方法是随机挑选一个当前还未被激活的神经元，修改 x 使该神经元输出超过某阈值，该过程迭代进行。所以这一部分要优化的目标函数就是神经元的输出 fn(x) (这里的 n 表示未激活的神经元)。</p>
-<center>
-![](DeepXplore/a2.png)
-</center>
-
-<h2 id="Joint-Optimization"><a href="#Joint-Optimization" class="headerlink" title="Joint Optimization"></a>Joint Optimization</h2><center>
-![](DeepXplore/optimize.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/a2.png" alt=""></p>
+<h2 id="Joint-Optimization"><a href="#Joint-Optimization" class="headerlink" title="Joint Optimization"></a>Joint Optimization</h2><p><img src="/2018/05/05/DeepXplore/optimize.png" alt=""></p>
 <p>联合优化的方法是先将前面两个模块的目标函数结合起来，计算联合函数的梯度，再利用梯度上升法更新 x。联合目标函数公式如下 (λ2 为平衡两个目标函数的超参数)：</p>
-<center>
-![](DeepXplore/joint.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/joint.png" alt=""></p>
 <h2 id="Dominant-specific-constraints"><a href="#Dominant-specific-constraints" class="headerlink" title="Dominant-specific constraints"></a>Dominant-specific constraints</h2><p>引入领域约束条件是为了使生成的 test input 更符合实际情况。文章给出了自动驾驶， MNIST 和 ImageNet 数据集的例子，我这里只展示自动驾驶的两个例子。一种是改变图片的明暗来模拟现实场景的不同光线；一种是增加 m*n 像素的黑色小方块，模拟镜头上的污点，见下图：</p>
-<center>
-![](DeepXplore/car.png)
-</center>
-
+<p><img src="/2018/05/05/DeepXplore/car.png" alt=""></p>
 <p>作者在文中提出的约束条件 (也就是图像转换) 是可以被梯度有效地引导 (计算) 的，然而这也带来一个问题，就是对图像的约束不够灵活。生成的新输入只相当于用于训练的输入加上一些小改动，感觉就是一种数据增强。</p>
 <h1 id="Experimental-Result"><a href="#Experimental-Result" class="headerlink" title="Experimental Result"></a>Experimental Result</h1><p>作者在 MNIST， ImageNet，Driving，Contagio/Virustotal (PDFs)，Drebin (Android apps) 五种数据集上进行了实验，用的 DNN 是一些各数据集上的经典模型。DeepXplore最终在被测 DNN 上总共发现了数千种错误行为，结果还是很可观的。</p>
 <p>实验结果表明，神经元覆盖率 (neuron coverage) 是一个有效的测试度量标准。表现在：仅用一小部分随机测试用例都能使代码覆盖率达到 100%，而此时的神经元覆盖率仅仅为 30% 左右；不同种类的输入与同类输入相比，激活的 unique neurons 更多；neuron coverage 上的微小增长也会提高 input diversity。</p>
@@ -463,7 +438,7 @@
 <blockquote>
 <p>… coming up with realistic models/constraints for data like images is a hard problem in itself. In DeepXplore, we start with the realistic input hoping that the mutated sample will be valid and therefore can appear in the wild. We also tried starting with random samples and found that DeepXplore can identify difference-inducing inputs, but they do not look like an image that do not look real.</p>
 </blockquote>
-<p>作者还提到他们正在考虑使用生成对抗网络 (GAN) 来研究如何生成较真实的图像。GAN 的确能帮助生成某种意义上直接的、真实的输入，但 Hollander 认为这样”新颖性”会受限 (他真的很严格呢)。Hollander 说，他期望 “ input generation starts from some constrainable, high-level description”，例如从文本到图像的 DNN，通过对文本的干扰，得到不同的输出。这样还可以将 DNN 应用到更复杂的场景，比如「一辆从左边开来的车、站在右边的狗、以及刚刚变绿的信号灯这三者的结合」，实现输入的复杂性和多样性。</p>
+<p>作者还提到他们正在考虑使用生成对抗网络 (GAN) 来研究如何生成较真实的图像。GAN 的确能帮助生成某种意义上直接的、真实的输入，但 Hollander 认为这样”新颖性”会受限。Hollander 说，他期望 “ input generation starts from some constrainable, high-level description”，例如从文本到图像的 DNN，通过对文本的干扰，得到不同的输出。这样还可以将 DNN 应用到更复杂的场景，比如「一辆从左边开来的车、站在右边的狗、以及刚刚变绿的信号灯这三者的结合」，实现输入的复杂性和多样性。</p>
 
       
     </div>
@@ -600,7 +575,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

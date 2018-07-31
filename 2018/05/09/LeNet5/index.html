@@ -83,18 +83,21 @@
 
 
 
-<meta name="description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  ![](LeNet5/model.png)   我们将卷">
+<meta name="description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  我们将卷积层用 Cx 表示，池化层用 Sx 表示，全连接">
 <meta name="keywords" content="CNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卷积神经网络 LeNet5 及 TensorFlow 实战">
 <meta property="og:url" content="http://zyzhang.top/2018/05/09/LeNet5/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  ![](LeNet5/model.png)   我们将卷">
+<meta property="og:description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  我们将卷积层用 Cx 表示，池化层用 Sx 表示，全连接">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-07-26T09:43:52.518Z">
+<meta property="og:image" content="http://zyzhang.top/2018/05/09/LeNet5/model.png">
+<meta property="og:image" content="http://zyzhang.top/2018/05/09/LeNet5/s2.png">
+<meta property="og:updated_time" content="2018-07-31T05:57:16.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络 LeNet5 及 TensorFlow 实战">
-<meta name="twitter:description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  ![](LeNet5/model.png)   我们将卷">
+<meta name="twitter:description" content="LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。 论文见 Gradient-based learning applied to document recognition LeNet-5 结构首先看一下 LeNet-5 的整体结构：  我们将卷积层用 Cx 表示，池化层用 Sx 表示，全连接">
+<meta name="twitter:image" content="http://zyzhang.top/2018/05/09/LeNet5/model.png">
 
 
 
@@ -360,10 +363,7 @@
         <p>LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。</p>
 <p>论文见 <a href="https://ieeexplore.ieee.org/abstract/document/726791/" target="_blank" rel="noopener">Gradient-based learning applied to document recognition</a></p>
 <h1 id="LeNet-5-结构"><a href="#LeNet-5-结构" class="headerlink" title="LeNet-5 结构"></a>LeNet-5 结构</h1><p>首先看一下 LeNet-5 的整体结构：</p>
-<center>
-![](LeNet5/model.png)
-</center>
-
+<p><img src="/2018/05/09/LeNet5/model.png" alt=""></p>
 <p>我们将卷积层用 Cx 表示，池化层用 Sx 表示，全连接层用 Fx 表示。 可以看到 LeNet-5 其实是7层结构（不包括输入层）。</p>
 <p><strong>输入层</strong></p>
 <p>输入为 32x32 pixel 的图像</p>
@@ -375,10 +375,7 @@
 <p>第二层为池化层。设采用最大池化 max_pooling，窗口大小为 2x2，滑动步长为 2，池化后得到 6 个大小为 14x14 的feature maps。参数共 2x6=12 个。</p>
 <p><strong>C3 层</strong></p>
 <p>第三层为卷积层，有 16 个 5x5 卷积核，卷积步长为 1。卷积后得到 16 个 10x10 大小的 feature maps ((14-5)/1+1=10)。每个 feature map 与 S2 层的连接方式如下：</p>
-<center>
-![](LeNet5/s2.png)
-</center>
-
+<p><img src="/2018/05/09/LeNet5/s2.png" alt=""></p>
 <p>可以看到，并不是每个 C3 层的 feature map 都与每个 S2 层的 feature map 相连。论文中说到采用这种连接方式的两种原因：适当减少参数；打破网络的对称性，从而不同的 feature maps 能从不同的输入组合中提取不同特征。</p>
 <p>我们来算一下这一层的训练参数个数：feature map 0-5 分别与 S2 层 3 个连续的 feature maps 相连，有 6x(3x5x5+1)=456 个参数； feature map 6-11 分别与 S2 层 4 个连续的 feature maps 相连，有 6x(4x5x5+1)=606 个参数； feature map 12-14 分别与 S2 层不连续的 4 个 feature maps 相连，有 3x(4x5x5+1)=303 个参数； 最后一个 feature map 与 S2 层全部 6 个 feature maps 相连，有1x(6x5x5+1)=151 个参数。总共的训练参数为：456+606+303+151=1516 个。</p>
 <p><strong>S4 层</strong></p>
@@ -632,7 +629,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

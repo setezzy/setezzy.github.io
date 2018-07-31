@@ -4,22 +4,22 @@
 
     
   <url>
-    <loc>http://zyzhang.top/2018/07/26/logistic_regression/</loc>
-    <lastmod>2018-07-30T13:47:36.812Z</lastmod>
+    <loc>http://zyzhang.top/2018/05/09/LeNet5/</loc>
+    <lastmod>2018-07-31T05:57:16.243Z</lastmod>
     <data>
         <display>
-        <title>Logistic Regression</title>
-        <pubTime>2018-07-26T09:25:34.987Z</pubTime>
+        <title>卷积神经网络 LeNet5 及 TensorFlow 实战</title>
+        <pubTime>2018-05-09T14:51:46.801Z</pubTime>
         
-        <tag>classification</tag>
+        <tag>CNN</tag>
          
          
            
              
-              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
           
              
-              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
+              <breadCrumb title="DNN" url="http://zyzhang.top/categories/DeepLearning/DNN/"/>
           
         </display>
     </data>
@@ -28,7 +28,7 @@
     
   <url>
     <loc>http://zyzhang.top/2018/05/05/DeepXplore/</loc>
-    <lastmod>2018-07-30T06:25:48.825Z</lastmod>
+    <lastmod>2018-07-31T05:55:19.700Z</lastmod>
     <data>
         <display>
         <title>论文笔记 - DeepXplore-Automated Whitebox Testing of DL Systems</title>
@@ -49,22 +49,22 @@
 
     
   <url>
-    <loc>http://zyzhang.top/2018/05/09/LeNet5/</loc>
-    <lastmod>2018-07-26T09:43:52.518Z</lastmod>
+    <loc>http://zyzhang.top/2018/07/26/logistic_regression/</loc>
+    <lastmod>2018-07-30T13:47:36.812Z</lastmod>
     <data>
         <display>
-        <title>卷积神经网络 LeNet5 及 TensorFlow 实战</title>
-        <pubTime>2018-05-09T14:51:46.801Z</pubTime>
+        <title>Logistic Regression</title>
+        <pubTime>2018-07-26T09:25:34.987Z</pubTime>
         
-        <tag>CNN</tag>
+        <tag>classification</tag>
          
          
            
              
-              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
+              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
           
              
-              <breadCrumb title="DNN" url="http://zyzhang.top/categories/DeepLearning/DNN/"/>
+              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>
