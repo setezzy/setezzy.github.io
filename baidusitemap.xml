@@ -5,14 +5,22 @@
     
   <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
-    <lastmod>2019-06-30T13:34:17.249Z</lastmod>
+    <lastmod>2019-06-30T13:40:55.113Z</lastmod>
     <data>
         <display>
-        <title></title>
+        <title>SSM 项目总结</title>
         <pubTime>2019-06-30T13:10:41.411Z</pubTime>
         
+        <tag>spring</tag>
+         
          
            
+             
+              <breadCrumb title="Java" url="http://zyzhang.top/categories/Java/"/>
+          
+             
+              <breadCrumb title="Spring 框架" url="http://zyzhang.top/categories/Java/Spring-%E6%A1%86%E6%9E%B6/"/>
+          
         </display>
     </data>
     </url>

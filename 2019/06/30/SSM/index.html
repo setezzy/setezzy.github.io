@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="spring,">
 
 
 
@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta name="description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
+<meta name="keywords" content="spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zhiyi&#39;s Blog">
+<meta property="og:title" content="SSM 项目总结">
 <meta property="og:url" content="http://zyzhang.top/2019/06/30/SSM/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta property="og:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-30T13:34:17.249Z">
+<meta property="og:updated_time" content="2019-06-30T13:40:55.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhiyi&#39;s Blog">
-<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta name="twitter:title" content="SSM 项目总结">
+<meta name="twitter:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
 
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title> | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>SSM 项目总结 | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -273,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">SSM 项目总结</h1>
         
 
         <div class="post-meta">
@@ -295,6 +296,39 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Spring-框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring 框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -323,15 +357,7 @@
       
 
       
-        <hr>
-<p>title: SSM项目总结<br>categories: </p>
-<ul>
-<li>java<br>tags: </li>
-<li>SSM </li>
-<li>SpringMVC </li>
-</ul>
-<hr>
-<p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
+        <p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
 <h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><pre><code>
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter” 
 </code></pre>
@@ -367,12 +393,11 @@ sudo chmod 664 /etc/my.cnf
 <h3 id="mybatis-generator"><a href="#mybatis-generator" class="headerlink" title="mybatis-generator"></a>mybatis-generator</h3><p>使用 generator 生成文件，产生了多余的 UserWithBolbs 类 </p>
 <p>原因：使用了 version 8.0 的 Connector/J </p>
 <p>解决:</p>
-<pre><code>
 <jdbcconnection driverclass="${jdbc.driver}" connectionurl="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}”> 
 <!--新增下面这句--> 
 <property name=" nullcatalogmeanscurrent"="" value="true"> 
 </jdbcconnection>
-</code></pre>  
+
 
 <h3 id="SQL-语法错误"><a href="#SQL-语法错误" class="headerlink" title="SQL 语法错误"></a>SQL 语法错误</h3><p>在插入数据库时提示： </p>
 <pre><code>
@@ -401,7 +426,6 @@ List<ordervo> selectByOrderState(@Param("ostate") Integer ostate, @Param("uid") 
 <li>请求域与当前域不一致 </li>
 </ul>
 <h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3><p>例如下面动态生成标签： </p>
-<pre><code>
 <div class="actions"> 
 <c:if test="${orderVO.ostate eq 1}"> 
 <a id="J_cancelOrder" name="J_cancelOrder" class="btn btn-small btn-line-gray" title="取消订单" data-order-id="${orderVO.oid}">取消订单</a> 
@@ -410,7 +434,7 @@ List<ordervo> selectByOrderState(@Param("ostate") Integer ostate, @Param("uid") 
 <a id="J_closeOrder" name="J_closeOrder" class="btn btn-small btn-line-gray" title="关闭订单" data-order-id="${orderVO.oid}">关闭订单</a> 
 </c:if> 
 </div> 
-</code></pre> 
+
 
 <p>通过下面的语句绑定 click 事件无效： </p>
 <pre><code>
@@ -439,6 +463,12 @@ $('.actions').on("click", '#J_closeOrder', function() {})
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"><i class="fa fa-tag"></i> spring</a>
+          
+        </div>
       
 
       
@@ -547,7 +577,7 @@ $('.actions').on("click", '#J_closeOrder', function() {})
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -558,7 +588,7 @@ $('.actions').on("click", '#J_closeOrder', function() {})
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
