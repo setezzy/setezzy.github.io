@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="SpringMVC,">
 
 
 
@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta name="description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
+<meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zhiyi&#39;s Blog">
+<meta property="og:title" content="SSM总结">
 <meta property="og:url" content="http://zyzhang.top/2019/06/30/SSM/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta property="og:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-30T13:10:41.411Z">
+<meta property="og:updated_time" content="2019-06-30T13:18:18.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhiyi&#39;s Blog">
-<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta name="twitter:title" content="SSM总结">
+<meta name="twitter:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
 
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title> | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>SSM总结 | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -273,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">SSM总结</h1>
         
 
         <div class="post-meta">
@@ -295,6 +296,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -323,15 +346,7 @@
       
 
       
-        <hr>
-<p>title: SSM项目总结<br>categories: </p>
-<ul>
-<li>java<br>tags: </li>
-<li>SSM </li>
-<li>SpringMVC </li>
-</ul>
-<hr>
-<p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
+        <p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
 <h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><pre><code class="lang-java">`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter”
 </code></pre>
 <p>`原因：缺少 jar 包<br>解决：添加以下jar包：jackson-databind, jackson-core, jackson-annotations </p>
@@ -351,10 +366,10 @@ sudo vi /etc/my.cnf //进行相应配置
 sudo chmod 664 /etc/my.cnf
 </code></pre>
 <p>`### mybatis-generator<br>使用 generator 生成文件，产生了多余的 UserWithBolbs 类<br>原因：使用了 version 8.0 的 Connector/J<br>解决： </p>
-<pre><code class="lang-java">`\&lt;jdbcConnection driverClass=&quot;$jdbc.driver&quot; 
-connectionURL=&quot;$jdbc.url&quot; 
-userId=&quot;$jdbc.username&quot; 
-password=&quot;$jdbc.password”\&gt; 
+<pre><code class="lang-java">`\&lt;jdbcConnection driverClass=&quot;${jdbc.driver}&quot; 
+connectionURL=&quot;${jdbc.url}&quot; 
+userId=&quot;${jdbc.username}&quot; 
+password=&quot;${jdbc.password}”\&gt; 
 \&lt;!--新增下面这句--\&gt; 
 \&lt;property name=&quot;nullCatalogMeansCurrent&quot; value=&quot;true&quot; /\&gt; 
 \&lt;/jdbcConnection\&gt;
@@ -365,7 +380,7 @@ password=&quot;$jdbc.password”\&gt;
 <p><code>原因：order 为 mysql 关键字 
 解决：改为 \</code>order`，或改掉数据表名称<br>此外，自己碰到的报 sql syntax error 的另一个可能就是传入的 record 为空 </p>
 <h3 id="传参错误"><a href="#传参错误" class="headerlink" title="传参错误"></a>传参错误</h3><p>传入两个参数进行 sql 查询时报错： </p>
-<pre><code class="lang-java">`nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;ostate&#39; not found. Available parameters are [arg1, arg0, param1, param2](#)
+<pre><code class="lang-java">`nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;ostate&#39; not found. Available parameters are [arg1, arg0, param1, param2]()
 </code></pre>
 <p>`原因：传入多个参数时要使用 @Param 注解，否则参数只能有一个<br>解决： </p>
 <pre><code class="lang-java">`List\&lt;OrderVO\&gt; selectByOrderState(@Param(&quot;ostate&quot;) Integer ostate, @Param(&quot;uid&quot;) Integer uid);
@@ -375,17 +390,17 @@ password=&quot;$jdbc.password”\&gt;
 <ul>
 <li>返回数据类型不是 json 类型 </li>
 <li>请求域与当前域不一致 <h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3>例如下面动态生成标签： <pre><code class="lang-java">`\&lt;div class=&quot;actions&quot;\&gt; 
-\&lt;c:if test=&quot;$orderVO.ostate eq 1&quot;\&gt; 
-\&lt;a id=&quot;J_cancelOrder&quot; name=&quot;J_cancelOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;取消订单&quot; data-order-id=&quot;$orderVO.oid&quot; \&gt;取消订单\&lt;/a\&gt; 
+\&lt;c:if test=&quot;${orderVO.ostate eq 1}&quot;\&gt; 
+\&lt;a id=&quot;J_cancelOrder&quot; name=&quot;J_cancelOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;取消订单&quot; data-order-id=&quot;${orderVO.oid}&quot; \&gt;取消订单\&lt;/a\&gt; 
 \&lt;/c:if\&gt; 
-\&lt;c:if test=&quot;$orderVO.ostate eq 3&quot;\&gt; 
-\&lt;a id=&quot;J_closeOrder&quot; name=&quot;J_closeOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;关闭订单&quot; data-order-id=&quot;$orderVO.oid&quot; \&gt;关闭订单\&lt;/a\&gt; 
+\&lt;c:if test=&quot;${orderVO.ostate eq 3}&quot;\&gt; 
+\&lt;a id=&quot;J_closeOrder&quot; name=&quot;J_closeOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;关闭订单&quot; data-order-id=&quot;${orderVO.oid}&quot; \&gt;关闭订单\&lt;/a\&gt; 
 \&lt;/c:if\&gt; 
 \&lt;/div\&gt;
 </code></pre>
-`通过下面的语句绑定 click 事件无效： <pre><code class="lang-java">`$(&#39;#J_cancelOrder&#39;).on(&quot;click&quot;, function() )
+`通过下面的语句绑定 click 事件无效： <pre><code class="lang-java">`$(&#39;#J_cancelOrder&#39;).on(&quot;click&quot;, function() {})
 </code></pre>
-`原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数<br>解决：需要绑定父元素 <pre><code class="lang-java">`$(&#39;.actions&#39;).on(&quot;click&quot;, &#39;#J_closeOrder&#39;, function() )
+`原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数<br>解决：需要绑定父元素 <pre><code class="lang-java">`$(&#39;.actions&#39;).on(&quot;click&quot;, &#39;#J_closeOrder&#39;, function() {})
 </code></pre>
 `### css 显示问题<br>页面不显示内容或样式<br>原因：div 找不到从属关系时不会设置样式，所以要注意 css 中样式的从属关系和 jsp 中的从属关系是否一致 </li>
 </ul>
@@ -403,6 +418,12 @@ password=&quot;$jdbc.password”\&gt;
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
+          
+        </div>
       
 
       
@@ -511,7 +532,7 @@ password=&quot;$jdbc.password”\&gt;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -522,7 +543,7 @@ password=&quot;$jdbc.password”\&gt;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
