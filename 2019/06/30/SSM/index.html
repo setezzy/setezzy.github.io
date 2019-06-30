@@ -83,17 +83,17 @@
 
 
 
-<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
+<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zhiyi&#39;s Blog">
 <meta property="og:url" content="http://zyzhang.top/2019/06/30/SSM/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
+<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-30T13:25:04.997Z">
+<meta property="og:updated_time" content="2019-06-30T13:34:17.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zhiyi&#39;s Blog">
-<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
+<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合 org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
 
 
 
@@ -332,41 +332,76 @@
 </ul>
 <hr>
 <p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
-<h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><p>org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter”<br>原因：缺少 jar 包 </p>
+<h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><pre><code>
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter” 
+</code></pre>
+
+<p>原因：缺少 jar 包 </p>
 <p>解决：添加以下jar包：jackson-databind, jackson-core, jackson-annotations </p>
-<p>PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index  </p>
+<pre><code>
+PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index 
+</code></pre> 
+
 <p>原因：当controller返回一个路径的时候，该路径（/index.jsp）被当作一个请求被dispatcherServlet 拦截，所以抛出异常 </p>
-<p>解决：在 spring 配置文件中加入 \<mvc:default-servlet-handler \=""> </mvc:default-servlet-handler></p>
+<p>解决：在 spring 配置文件中加入 <mvc:default-servlet-handler> </mvc:default-servlet-handler></p>
 <h3 id="欢迎页设置"><a href="#欢迎页设置" class="headerlink" title="欢迎页设置"></a>欢迎页设置</h3><p>将欢迎页设置为其他路径下的jsp：</p>
 <p>首先 web.xml 中欢迎页设为空，然后对应路径的controller中加入根路径 </p>
-<p><welcomfile></welcomfile><br>@ResquestMapping(“/login”, “/“) </p>
-<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><h3 id="Mysql-登录错误"><a href="#Mysql-登录错误" class="headerlink" title="Mysql 登录错误"></a>Mysql 登录错误</h3><p>Lost connection to MySQL server at ‘reading initial communication packet’, system error: 102 </p>
-<p>原因：Mysql 配置文件问题<br>解决： </p>
-<p>mysql —help|grep ‘my.cnf’ //查看mysql允许的配置文件路径<br>sudo vi /etc/my.cnf //进行相应配置<br>sudo chmod 664 /etc/my.cnf </p>
+<pre><code>
+<welcomfile></welcomfile> 
+@ResquestMapping("/login", "/") 
+</code></pre>
+
+<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><h3 id="Mysql-登录错误"><a href="#Mysql-登录错误" class="headerlink" title="Mysql 登录错误"></a>Mysql 登录错误</h3><pre><code>
+Lost connection to MySQL server at 'reading initial communication packet', system error: 102
+</code></pre> 
+
+
+<p>原因：Mysql 配置文件问题</p>
+<p>解决： </p>
+<pre><code>
+mysql --help|grep ‘my.cnf' //查看mysql允许的配置文件路径 
+sudo vi /etc/my.cnf //进行相应配置 
+sudo chmod 664 /etc/my.cnf 
+</code></pre> 
+
 <h3 id="mybatis-generator"><a href="#mybatis-generator" class="headerlink" title="mybatis-generator"></a>mybatis-generator</h3><p>使用 generator 生成文件，产生了多余的 UserWithBolbs 类 </p>
 <p>原因：使用了 version 8.0 的 Connector/J </p>
 <p>解决:</p>
+<pre><code>
 <jdbcconnection driverclass="${jdbc.driver}" connectionurl="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}”> 
 <!--新增下面这句--> 
 <property name=" nullcatalogmeanscurrent"="" value="true"> 
-</jdbcconnection> 
+</jdbcconnection>
+</code></pre>  
 
 <h3 id="SQL-语法错误"><a href="#SQL-语法错误" class="headerlink" title="SQL 语法错误"></a>SQL 语法错误</h3><p>在插入数据库时提示： </p>
-<p>You have an error in you SQL syntax … near ‘insert into order …’ </p>
+<pre><code>
+You have an error in you SQL syntax … near 'insert into order ...' 
+</code></pre> 
+
 <p>原因：order 为 mysql 关键字 </p>
-<p>解决：改为 `order`，或改掉数据表名称 </p>
+<p>解决：改为 <code>order</code>，或改掉数据表名称 </p>
 <p>此外，自己碰到的报 sql syntax error 的另一个可能就是传入的 record 为空 </p>
 <h3 id="传参错误"><a href="#传参错误" class="headerlink" title="传参错误"></a>传参错误</h3><p>传入两个参数进行 sql 查询时报错： </p>
-<p>nested exception is org.apache.ibatis.binding.BindingException: Parameter ‘ostate’ not found. Available parameters are [arg1, arg0, param1, param2] </p>
+<pre><code>
+nested exception is org.apache.ibatis.binding.BindingException: Parameter 'ostate' not found. Available parameters are [arg1, arg0, param1, param2] 
+</code></pre> 
+
 <p>原因：传入多个参数时要使用 @Param 注解，否则参数只能有一个 </p>
 <p>解决： </p>
-<p>List<ordervo> selectByOrderState(@Param(“ostate”) Integer ostate, @Param(“uid”) Integer uid); </ordervo></p>
-<h2 id="Jquery"><a href="#Jquery" class="headerlink" title="Jquery"></a>Jquery</h2><h3 id="ajax-返回错误"><a href="#ajax-返回错误" class="headerlink" title="ajax 返回错误"></a>ajax 返回错误</h3><p>ajax 执行成功，但无返回值。用 alert 测试时发现进入 error 方法体内。<br>原因：相应的方法忘了写 @ResponseBody 注解<br>Ajax 进入 error 内其他几种可能原因： </p>
+<pre><code>
+List<ordervo> selectByOrderState(@Param("ostate") Integer ostate, @Param("uid") Integer uid); 
+</ordervo></code></pre> 
+
+<h2 id="Jquery"><a href="#Jquery" class="headerlink" title="Jquery"></a>Jquery</h2><h3 id="ajax-返回错误"><a href="#ajax-返回错误" class="headerlink" title="ajax 返回错误"></a>ajax 返回错误</h3><p>ajax 执行成功，但无返回值。用 alert 测试时发现进入 error 方法体内。 </p>
+<p>原因：相应的方法忘了写 @ResponseBody 注解 </p>
+<p>Ajax 进入 error 内其他几种可能原因： </p>
 <ul>
 <li>返回数据类型不是 json 类型 </li>
 <li>请求域与当前域不一致 </li>
-<li><h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3>例如下面动态生成标签： </li>
 </ul>
+<h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3><p>例如下面动态生成标签： </p>
+<pre><code>
 <div class="actions"> 
 <c:if test="${orderVO.ostate eq 1}"> 
 <a id="J_cancelOrder" name="J_cancelOrder" class="btn btn-small btn-line-gray" title="取消订单" data-order-id="${orderVO.oid}">取消订单</a> 
@@ -375,12 +410,19 @@
 <a id="J_closeOrder" name="J_closeOrder" class="btn btn-small btn-line-gray" title="关闭订单" data-order-id="${orderVO.oid}">关闭订单</a> 
 </c:if> 
 </div> 
+</code></pre> 
 
 <p>通过下面的语句绑定 click 事件无效： </p>
-<p>$(‘#J_cancelOrder’).on(“click”, function() {}) </p>
+<pre><code>
+$('#J_cancelOrder').on("click", function() {}) 
+</code></pre> 
+
 <p>原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数 </p>
 <p>解决：需要绑定父元素 </p>
-<p>$(‘.actions’).on(“click”, ‘#J_closeOrder’, function() {}) </p>
+<pre><code> 
+$('.actions').on("click", '#J_closeOrder', function() {}) 
+</code></pre> 
+
 <h3 id="css-显示问题"><a href="#css-显示问题" class="headerlink" title="css 显示问题"></a>css 显示问题</h3><p>页面不显示内容或样式 </p>
 <p>原因：div 找不到从属关系时不会设置样式，所以要注意 css 中样式的从属关系和 jsp 中的从属关系是否一致 </p>
 
