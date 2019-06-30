@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zhiyi&#39;s Blog">
+<meta property="og:url" content="http://zyzhang.top/2019/06/30/SSM/index.html">
+<meta property="og:site_name" content="Zhiyi&#39;s Blog">
+<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-30T13:10:41.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zhiyi&#39;s Blog">
+<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with nam">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zyzhang.top/2019/06/30/SSM/">
+
+
+
+
+
+  <title> | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhiyi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/06/30/SSM/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhiyi Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T21:10:41+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: SSM项目总结<br>categories: </p>
+<ul>
+<li>java<br>tags: </li>
+<li>SSM </li>
+<li>SpringMVC </li>
+</ul>
+<hr>
+<p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
+<h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><pre><code class="lang-java">`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter”
+</code></pre>
+<p>`原因：缺少 jar 包<br>解决：添加以下jar包：jackson-databind, jackson-core, jackson-annotations </p>
+<pre><code class="lang-java">`PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index
+</code></pre>
+<p>`原因：当controller返回一个路径的时候，该路径（/index.jsp）被当作一个请求被dispatcherServlet 拦截，所以抛出异常<br>解决：在 spring 配置文件中加入 \<mvc:default-servlet-handler \=""> </mvc:default-servlet-handler></p>
+<h3 id="欢迎页设置"><a href="#欢迎页设置" class="headerlink" title="欢迎页设置"></a>欢迎页设置</h3><p>将欢迎页设置为其他路径下的jsp：<br>首先 web.xml 中欢迎页设为空，然后对应路径的controller中加入根路径 </p>
+<pre><code class="lang-java">`\&lt;welcomfile\&gt;\&lt;/welcomfile\&gt; 
+@ResquestMapping(&quot;/login&quot;, &quot;/&quot;)
+</code></pre>
+<p>`## MyBatis </p>
+<h3 id="Mysql-登录错误"><a href="#Mysql-登录错误" class="headerlink" title="Mysql 登录错误"></a>Mysql 登录错误</h3><pre><code class="lang-java">`Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 102
+</code></pre>
+<p>`原因：Mysql 配置文件问题<br>解决： </p>
+<pre><code class="lang-java">`mysql --help|grep ‘my.cnf&#39; //查看mysql允许的配置文件路径 
+sudo vi /etc/my.cnf //进行相应配置 
+sudo chmod 664 /etc/my.cnf
+</code></pre>
+<p>`### mybatis-generator<br>使用 generator 生成文件，产生了多余的 UserWithBolbs 类<br>原因：使用了 version 8.0 的 Connector/J<br>解决： </p>
+<pre><code class="lang-java">`\&lt;jdbcConnection driverClass=&quot;$jdbc.driver&quot; 
+connectionURL=&quot;$jdbc.url&quot; 
+userId=&quot;$jdbc.username&quot; 
+password=&quot;$jdbc.password”\&gt; 
+\&lt;!--新增下面这句--\&gt; 
+\&lt;property name=&quot;nullCatalogMeansCurrent&quot; value=&quot;true&quot; /\&gt; 
+\&lt;/jdbcConnection\&gt;
+</code></pre>
+<p>`### SQL 语法错误<br>在插入数据库时提示： </p>
+<pre><code class="lang-java">`You have an error in you SQL syntax … near &#39;insert into order ...&#39;
+</code></pre>
+<p><code>原因：order 为 mysql 关键字 
+解决：改为 \</code>order`，或改掉数据表名称<br>此外，自己碰到的报 sql syntax error 的另一个可能就是传入的 record 为空 </p>
+<h3 id="传参错误"><a href="#传参错误" class="headerlink" title="传参错误"></a>传参错误</h3><p>传入两个参数进行 sql 查询时报错： </p>
+<pre><code class="lang-java">`nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;ostate&#39; not found. Available parameters are [arg1, arg0, param1, param2](#)
+</code></pre>
+<p>`原因：传入多个参数时要使用 @Param 注解，否则参数只能有一个<br>解决： </p>
+<pre><code class="lang-java">`List\&lt;OrderVO\&gt; selectByOrderState(@Param(&quot;ostate&quot;) Integer ostate, @Param(&quot;uid&quot;) Integer uid);
+</code></pre>
+<p>`## Jquery </p>
+<h3 id="ajax-返回错误"><a href="#ajax-返回错误" class="headerlink" title="ajax 返回错误"></a>ajax 返回错误</h3><p>ajax 执行成功，但无返回值。用 alert 测试时发现进入 error 方法体内。<br>原因：相应的方法忘了写 @ResponseBody 注解<br>Ajax 进入 error 内其他几种可能原因： </p>
+<ul>
+<li>返回数据类型不是 json 类型 </li>
+<li>请求域与当前域不一致 <h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3>例如下面动态生成标签： <pre><code class="lang-java">`\&lt;div class=&quot;actions&quot;\&gt; 
+\&lt;c:if test=&quot;$orderVO.ostate eq 1&quot;\&gt; 
+\&lt;a id=&quot;J_cancelOrder&quot; name=&quot;J_cancelOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;取消订单&quot; data-order-id=&quot;$orderVO.oid&quot; \&gt;取消订单\&lt;/a\&gt; 
+\&lt;/c:if\&gt; 
+\&lt;c:if test=&quot;$orderVO.ostate eq 3&quot;\&gt; 
+\&lt;a id=&quot;J_closeOrder&quot; name=&quot;J_closeOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;关闭订单&quot; data-order-id=&quot;$orderVO.oid&quot; \&gt;关闭订单\&lt;/a\&gt; 
+\&lt;/c:if\&gt; 
+\&lt;/div\&gt;
+</code></pre>
+`通过下面的语句绑定 click 事件无效： <pre><code class="lang-java">`$(&#39;#J_cancelOrder&#39;).on(&quot;click&quot;, function() )
+</code></pre>
+`原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数<br>解决：需要绑定父元素 <pre><code class="lang-java">`$(&#39;.actions&#39;).on(&quot;click&quot;, &#39;#J_closeOrder&#39;, function() )
+</code></pre>
+`### css 显示问题<br>页面不显示内容或样式<br>原因：div 找不到从属关系时不会设置样式，所以要注意 css 中样式的从属关系和 jsp 中的从属关系是否一致 </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/03/tensorflow installation/" rel="next" title="TensorFlow安装">
+                <i class="fa fa-chevron-left"></i> TensorFlow安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/me.jpg" alt="Zhiyi Zhang">
+            
+              <p class="site-author-name" itemprop="name">Zhiyi Zhang</p>
+              <p class="site-description motion-element" itemprop="description">love all, trust a few, do wrong to none</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/setezzy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="zhyzhang@whu.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-email"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/roodozy" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Framework"><span class="nav-number">1.</span> <span class="nav-text">Spring Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSM-整合"><span class="nav-number">1.1.</span> <span class="nav-text">SSM 整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欢迎页设置"><span class="nav-number">1.2.</span> <span class="nav-text">欢迎页设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql-登录错误"><span class="nav-number">1.3.</span> <span class="nav-text">Mysql 登录错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传参错误"><span class="nav-number">1.4.</span> <span class="nav-text">传参错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax-返回错误"><span class="nav-number">1.5.</span> <span class="nav-text">ajax 返回错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态元素绑定事件无效"><span class="nav-number">1.6.</span> <span class="nav-text">动态元素绑定事件无效</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhiyi Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+<span class="post-meta-divider">|</span>
+
+<span id="busuanzi_container_site_uv">
+  Total visited <span id="busuanzi_value_site_uv"></span> times
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

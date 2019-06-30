@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
+    <lastmod>2019-06-30T13:10:41.411Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2019-06-30T13:10:41.411Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
+    <lastmod>2019-06-03T15:42:25.589Z</lastmod>
+    <data>
+        <display>
+        <title>TensorFlow安装</title>
+        <pubTime>2019-06-03T15:42:25.589Z</pubTime>
+        
+        <tag>tensorflow</tag>
+         
+         
+           
+             
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
+          
+             
+              <breadCrumb title="Mix" url="http://zyzhang.top/categories/DeepLearning/Mix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu [firmware bug] 修复</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>在 Hexo 中渲染 Latex 公式</title>
+        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
+        
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Logistic Regression</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>classification</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
+          
+             
+              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
+    <lastmod>2019-06-03T15:42:25.580Z</lastmod>
+    <data>
+        <display>
+        <title>基于Keras的数据增广实现</title>
+        <pubTime>2019-06-03T15:42:25.579Z</pubTime>
+        
+        <tag>keras</tag>
+         
+        <tag>data augmentation</tag>
+         
+         
+           
+             
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
+          
+             
+              <breadCrumb title="Practice" url="http://zyzhang.top/categories/DeepLearning/Practice/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/essay1/</loc>
+    <lastmod>2019-06-03T15:42:25.580Z</lastmod>
+    <data>
+        <display>
+        <title>灵魂总是要贪片刻灿烂</title>
+        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="随笔" url="http://zyzhang.top/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/Linux%20grub%20fixing/</loc>
+    <lastmod>2019-06-03T15:42:25.579Z</lastmod>
+    <data>
+        <display>
+        <title>Linux grub 修复</title>
+        <pubTime>2019-06-03T15:42:25.579Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
+    <lastmod>2019-06-03T15:42:25.578Z</lastmod>
+    <data>
+        <display>
+        <title>卷积神经网络 LeNet5 及 TensorFlow 实战</title>
+        <pubTime>2019-06-03T15:42:25.578Z</pubTime>
+        
+        <tag>CNN</tag>
+         
+         
+           
+             
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
+          
+             
+              <breadCrumb title="DNN" url="http://zyzhang.top/categories/DeepLearning/DNN/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/DeepXplore/</loc>
+    <lastmod>2019-06-03T15:42:25.570Z</lastmod>
+    <data>
+        <display>
+        <title>论文笔记 - DeepXplore-Automated Whitebox Testing of DL Systems</title>
+        <pubTime>2019-06-03T15:42:25.570Z</pubTime>
+        
+        <tag>testing</tag>
+         
+        <tag>deep learning system</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文笔记" url="http://zyzhang.top/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>
