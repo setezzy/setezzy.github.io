@@ -5,19 +5,14 @@
     
   <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
-    <lastmod>2019-06-30T13:18:18.599Z</lastmod>
+    <lastmod>2019-06-30T13:25:04.997Z</lastmod>
     <data>
         <display>
-        <title>SSM总结</title>
+        <title></title>
         <pubTime>2019-06-30T13:10:41.411Z</pubTime>
         
-        <tag>SpringMVC</tag>
-         
          
            
-             
-              <breadCrumb title="Java" url="http://zyzhang.top/categories/Java/"/>
-          
         </display>
     </data>
     </url>
@@ -42,6 +37,29 @@
           
              
               <breadCrumb title="Mix" url="http://zyzhang.top/categories/DeepLearning/Mix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Logistic Regression</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>classification</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
+          
+             
+              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>
@@ -84,29 +102,6 @@
            
              
               <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>Logistic Regression</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
-        
-        <tag>classification</tag>
-         
-         
-           
-             
-              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
-          
-             
-              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>

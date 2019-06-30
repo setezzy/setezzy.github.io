@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="SpringMVC,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -83,18 +83,17 @@
 
 
 
-<meta name="description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
-<meta name="keywords" content="SpringMVC">
+<meta name="description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSM总结">
+<meta property="og:title" content="Zhiyi&#39;s Blog">
 <meta property="og:url" content="http://zyzhang.top/2019/06/30/SSM/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
+<meta property="og:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-30T13:18:18.599Z">
+<meta property="og:updated_time" content="2019-06-30T13:25:04.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSM总结">
-<meta name="twitter:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
+<meta name="twitter:title" content="Zhiyi&#39;s Blog">
+<meta name="twitter:description" content="title: SSM项目总结categories:   javatags:  SSM  SpringMVC    这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合org.springframework.beans.factory.BeanCreationException: Error creating bean with name">
 
 
 
@@ -130,7 +129,7 @@
 
 
 
-  <title>SSM总结 | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -274,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SSM总结</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -296,28 +295,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -346,64 +323,66 @@
       
 
       
-        <p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
-<h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><pre><code class="lang-java">`org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter”
-</code></pre>
-<p>`原因：缺少 jar 包<br>解决：添加以下jar包：jackson-databind, jackson-core, jackson-annotations </p>
-<pre><code class="lang-java">`PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index
-</code></pre>
-<p>`原因：当controller返回一个路径的时候，该路径（/index.jsp）被当作一个请求被dispatcherServlet 拦截，所以抛出异常<br>解决：在 spring 配置文件中加入 \<mvc:default-servlet-handler \=""> </mvc:default-servlet-handler></p>
-<h3 id="欢迎页设置"><a href="#欢迎页设置" class="headerlink" title="欢迎页设置"></a>欢迎页设置</h3><p>将欢迎页设置为其他路径下的jsp：<br>首先 web.xml 中欢迎页设为空，然后对应路径的controller中加入根路径 </p>
-<pre><code class="lang-java">`\&lt;welcomfile\&gt;\&lt;/welcomfile\&gt; 
-@ResquestMapping(&quot;/login&quot;, &quot;/&quot;)
-</code></pre>
-<p>`## MyBatis </p>
-<h3 id="Mysql-登录错误"><a href="#Mysql-登录错误" class="headerlink" title="Mysql 登录错误"></a>Mysql 登录错误</h3><pre><code class="lang-java">`Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 102
-</code></pre>
-<p>`原因：Mysql 配置文件问题<br>解决： </p>
-<pre><code class="lang-java">`mysql --help|grep ‘my.cnf&#39; //查看mysql允许的配置文件路径 
-sudo vi /etc/my.cnf //进行相应配置 
-sudo chmod 664 /etc/my.cnf
-</code></pre>
-<p>`### mybatis-generator<br>使用 generator 生成文件，产生了多余的 UserWithBolbs 类<br>原因：使用了 version 8.0 的 Connector/J<br>解决： </p>
-<pre><code class="lang-java">`\&lt;jdbcConnection driverClass=&quot;${jdbc.driver}&quot; 
-connectionURL=&quot;${jdbc.url}&quot; 
-userId=&quot;${jdbc.username}&quot; 
-password=&quot;${jdbc.password}”\&gt; 
-\&lt;!--新增下面这句--\&gt; 
-\&lt;property name=&quot;nullCatalogMeansCurrent&quot; value=&quot;true&quot; /\&gt; 
-\&lt;/jdbcConnection\&gt;
-</code></pre>
-<p>`### SQL 语法错误<br>在插入数据库时提示： </p>
-<pre><code class="lang-java">`You have an error in you SQL syntax … near &#39;insert into order ...&#39;
-</code></pre>
-<p><code>原因：order 为 mysql 关键字 
-解决：改为 \</code>order`，或改掉数据表名称<br>此外，自己碰到的报 sql syntax error 的另一个可能就是传入的 record 为空 </p>
+        <hr>
+<p>title: SSM项目总结<br>categories: </p>
+<ul>
+<li>java<br>tags: </li>
+<li>SSM </li>
+<li>SpringMVC </li>
+</ul>
+<hr>
+<p>这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。 </p>
+<h2 id="Spring-Framework"><a href="#Spring-Framework" class="headerlink" title="Spring Framework"></a>Spring Framework</h2><h3 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h3><p>org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter”<br>原因：缺少 jar 包 </p>
+<p>解决：添加以下jar包：jackson-databind, jackson-core, jackson-annotations </p>
+<p>PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index  </p>
+<p>原因：当controller返回一个路径的时候，该路径（/index.jsp）被当作一个请求被dispatcherServlet 拦截，所以抛出异常 </p>
+<p>解决：在 spring 配置文件中加入 \<mvc:default-servlet-handler \=""> </mvc:default-servlet-handler></p>
+<h3 id="欢迎页设置"><a href="#欢迎页设置" class="headerlink" title="欢迎页设置"></a>欢迎页设置</h3><p>将欢迎页设置为其他路径下的jsp：</p>
+<p>首先 web.xml 中欢迎页设为空，然后对应路径的controller中加入根路径 </p>
+<p><welcomfile></welcomfile><br>@ResquestMapping(“/login”, “/“) </p>
+<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><h3 id="Mysql-登录错误"><a href="#Mysql-登录错误" class="headerlink" title="Mysql 登录错误"></a>Mysql 登录错误</h3><p>Lost connection to MySQL server at ‘reading initial communication packet’, system error: 102 </p>
+<p>原因：Mysql 配置文件问题<br>解决： </p>
+<p>mysql —help|grep ‘my.cnf’ //查看mysql允许的配置文件路径<br>sudo vi /etc/my.cnf //进行相应配置<br>sudo chmod 664 /etc/my.cnf </p>
+<h3 id="mybatis-generator"><a href="#mybatis-generator" class="headerlink" title="mybatis-generator"></a>mybatis-generator</h3><p>使用 generator 生成文件，产生了多余的 UserWithBolbs 类 </p>
+<p>原因：使用了 version 8.0 的 Connector/J </p>
+<p>解决:</p>
+<jdbcconnection driverclass="${jdbc.driver}" connectionurl="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}”> 
+<!--新增下面这句--> 
+<property name=" nullcatalogmeanscurrent"="" value="true"> 
+</jdbcconnection> 
+
+<h3 id="SQL-语法错误"><a href="#SQL-语法错误" class="headerlink" title="SQL 语法错误"></a>SQL 语法错误</h3><p>在插入数据库时提示： </p>
+<p>You have an error in you SQL syntax … near ‘insert into order …’ </p>
+<p>原因：order 为 mysql 关键字 </p>
+<p>解决：改为 `order`，或改掉数据表名称 </p>
+<p>此外，自己碰到的报 sql syntax error 的另一个可能就是传入的 record 为空 </p>
 <h3 id="传参错误"><a href="#传参错误" class="headerlink" title="传参错误"></a>传参错误</h3><p>传入两个参数进行 sql 查询时报错： </p>
-<pre><code class="lang-java">`nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;ostate&#39; not found. Available parameters are [arg1, arg0, param1, param2]()
-</code></pre>
-<p>`原因：传入多个参数时要使用 @Param 注解，否则参数只能有一个<br>解决： </p>
-<pre><code class="lang-java">`List\&lt;OrderVO\&gt; selectByOrderState(@Param(&quot;ostate&quot;) Integer ostate, @Param(&quot;uid&quot;) Integer uid);
-</code></pre>
-<p>`## Jquery </p>
-<h3 id="ajax-返回错误"><a href="#ajax-返回错误" class="headerlink" title="ajax 返回错误"></a>ajax 返回错误</h3><p>ajax 执行成功，但无返回值。用 alert 测试时发现进入 error 方法体内。<br>原因：相应的方法忘了写 @ResponseBody 注解<br>Ajax 进入 error 内其他几种可能原因： </p>
+<p>nested exception is org.apache.ibatis.binding.BindingException: Parameter ‘ostate’ not found. Available parameters are [arg1, arg0, param1, param2] </p>
+<p>原因：传入多个参数时要使用 @Param 注解，否则参数只能有一个 </p>
+<p>解决： </p>
+<p>List<ordervo> selectByOrderState(@Param(“ostate”) Integer ostate, @Param(“uid”) Integer uid); </ordervo></p>
+<h2 id="Jquery"><a href="#Jquery" class="headerlink" title="Jquery"></a>Jquery</h2><h3 id="ajax-返回错误"><a href="#ajax-返回错误" class="headerlink" title="ajax 返回错误"></a>ajax 返回错误</h3><p>ajax 执行成功，但无返回值。用 alert 测试时发现进入 error 方法体内。<br>原因：相应的方法忘了写 @ResponseBody 注解<br>Ajax 进入 error 内其他几种可能原因： </p>
 <ul>
 <li>返回数据类型不是 json 类型 </li>
-<li>请求域与当前域不一致 <h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3>例如下面动态生成标签： <pre><code class="lang-java">`\&lt;div class=&quot;actions&quot;\&gt; 
-\&lt;c:if test=&quot;${orderVO.ostate eq 1}&quot;\&gt; 
-\&lt;a id=&quot;J_cancelOrder&quot; name=&quot;J_cancelOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;取消订单&quot; data-order-id=&quot;${orderVO.oid}&quot; \&gt;取消订单\&lt;/a\&gt; 
-\&lt;/c:if\&gt; 
-\&lt;c:if test=&quot;${orderVO.ostate eq 3}&quot;\&gt; 
-\&lt;a id=&quot;J_closeOrder&quot; name=&quot;J_closeOrder&quot; class=&quot;btn btn-small btn-line-gray&quot; title=&quot;关闭订单&quot; data-order-id=&quot;${orderVO.oid}&quot; \&gt;关闭订单\&lt;/a\&gt; 
-\&lt;/c:if\&gt; 
-\&lt;/div\&gt;
-</code></pre>
-`通过下面的语句绑定 click 事件无效： <pre><code class="lang-java">`$(&#39;#J_cancelOrder&#39;).on(&quot;click&quot;, function() {})
-</code></pre>
-`原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数<br>解决：需要绑定父元素 <pre><code class="lang-java">`$(&#39;.actions&#39;).on(&quot;click&quot;, &#39;#J_closeOrder&#39;, function() {})
-</code></pre>
-`### css 显示问题<br>页面不显示内容或样式<br>原因：div 找不到从属关系时不会设置样式，所以要注意 css 中样式的从属关系和 jsp 中的从属关系是否一致 </li>
+<li>请求域与当前域不一致 </li>
+<li><h3 id="动态元素绑定事件无效"><a href="#动态元素绑定事件无效" class="headerlink" title="动态元素绑定事件无效"></a>动态元素绑定事件无效</h3>例如下面动态生成标签： </li>
 </ul>
+<div class="actions"> 
+<c:if test="${orderVO.ostate eq 1}"> 
+<a id="J_cancelOrder" name="J_cancelOrder" class="btn btn-small btn-line-gray" title="取消订单" data-order-id="${orderVO.oid}">取消订单</a> 
+</c:if> 
+<c:if test="${orderVO.ostate eq 3}"> 
+<a id="J_closeOrder" name="J_closeOrder" class="btn btn-small btn-line-gray" title="关闭订单" data-order-id="${orderVO.oid}">关闭订单</a> 
+</c:if> 
+</div> 
+
+<p>通过下面的语句绑定 click 事件无效： </p>
+<p>$(‘#J_cancelOrder’).on(“click”, function() {}) </p>
+<p>原因：on 虽然支持给动态元素绑定事件，但 on 前面的元素也必须在页面加载前就存在于 dom 中，动态的元素或样式可以放在 on 的第二个参数 </p>
+<p>解决：需要绑定父元素 </p>
+<p>$(‘.actions’).on(“click”, ‘#J_closeOrder’, function() {}) </p>
+<h3 id="css-显示问题"><a href="#css-显示问题" class="headerlink" title="css 显示问题"></a>css 显示问题</h3><p>页面不显示内容或样式 </p>
+<p>原因：div 找不到从属关系时不会设置样式，所以要注意 css 中样式的从属关系和 jsp 中的从属关系是否一致 </p>
 
       
     </div>
@@ -418,12 +397,6 @@ password=&quot;${jdbc.password}”\&gt;
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
-          
-        </div>
       
 
       
@@ -532,7 +505,7 @@ password=&quot;${jdbc.password}”\&gt;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -543,7 +516,7 @@ password=&quot;${jdbc.password}”\&gt;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -598,7 +571,7 @@ password=&quot;${jdbc.password}”\&gt;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Framework"><span class="nav-number">1.</span> <span class="nav-text">Spring Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSM-整合"><span class="nav-number">1.1.</span> <span class="nav-text">SSM 整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欢迎页设置"><span class="nav-number">1.2.</span> <span class="nav-text">欢迎页设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql-登录错误"><span class="nav-number">1.3.</span> <span class="nav-text">Mysql 登录错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传参错误"><span class="nav-number">1.4.</span> <span class="nav-text">传参错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax-返回错误"><span class="nav-number">1.5.</span> <span class="nav-text">ajax 返回错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态元素绑定事件无效"><span class="nav-number">1.6.</span> <span class="nav-text">动态元素绑定事件无效</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Framework"><span class="nav-number">1.</span> <span class="nav-text">Spring Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSM-整合"><span class="nav-number">1.1.</span> <span class="nav-text">SSM 整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欢迎页设置"><span class="nav-number">1.2.</span> <span class="nav-text">欢迎页设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis"><span class="nav-number">2.</span> <span class="nav-text">MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql-登录错误"><span class="nav-number">2.1.</span> <span class="nav-text">Mysql 登录错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-generator"><span class="nav-number">2.2.</span> <span class="nav-text">mybatis-generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-语法错误"><span class="nav-number">2.3.</span> <span class="nav-text">SQL 语法错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传参错误"><span class="nav-number">2.4.</span> <span class="nav-text">传参错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jquery"><span class="nav-number">3.</span> <span class="nav-text">Jquery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax-返回错误"><span class="nav-number">3.1.</span> <span class="nav-text">ajax 返回错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态元素绑定事件无效"><span class="nav-number">3.2.</span> <span class="nav-text">动态元素绑定事件无效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css-显示问题"><span class="nav-number">3.3.</span> <span class="nav-text">css 显示问题</span></a></li></ol></li></ol></div>
             
 
           </div>
