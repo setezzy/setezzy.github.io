@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
-    <lastmod>2019-07-01T01:54:46.719Z</lastmod>
+    <lastmod>2019-07-01T01:57:13.319Z</lastmod>
     <data>
         <display>
         <title>SSM 项目总结</title>
@@ -45,6 +45,7 @@
 
     
     
+    
   <url>
     <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
     <lastmod>2019-06-03T15:42:25.589Z</lastmod>
@@ -68,7 +69,6 @@
     </url>
 
     
-    
   <url>
     <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
@@ -83,28 +83,6 @@
            
              
               <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu [firmware bug] 修复</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>bug</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
           
         </display>
     </data>
@@ -128,6 +106,28 @@
           
              
               <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu [firmware bug] 修复</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
           
         </display>
     </data>
