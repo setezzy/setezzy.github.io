@@ -4,8 +4,26 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/06/03/essay1/</loc>
+    <lastmod>2019-07-01T01:41:53.860Z</lastmod>
+    <data>
+        <display>
+        <title>灵魂总是要贪片刻灿烂</title>
+        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="随笔" url="http://zyzhang.top/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
-    <lastmod>2019-07-01T01:34:13.170Z</lastmod>
+    <lastmod>2019-07-01T01:41:09.575Z</lastmod>
     <data>
         <display>
         <title>SSM 项目总结</title>
@@ -52,6 +70,28 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu [firmware bug] 修复</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     <data>
@@ -88,46 +128,6 @@
            
              
               <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu [firmware bug] 修复</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>bug</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/essay1/</loc>
-    <lastmod>2019-06-03T15:42:25.580Z</lastmod>
-    <data>
-        <display>
-        <title>灵魂总是要贪片刻灿烂</title>
-        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="随笔" url="http://zyzhang.top/categories/%E9%9A%8F%E7%AC%94/"/>
           
         </display>
     </data>
