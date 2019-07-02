@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
 <meta property="og:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合1org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-02T06:07:04.305Z">
+<meta property="og:updated_time" content="2019-07-02T06:24:13.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSM 项目总结">
 <meta name="twitter:description" content="这篇总结下自己在做网上商城项目时遇到的一些bug，方便日后查阅。  Spring FrameworkSSM 整合1org.springframework.beans.factory.BeanCreationException: Error creating bean with name “org.springframework.web.servlet.mvc.method.annotation.R">
@@ -375,8 +375,8 @@ Lost connection to MySQL server at 'reading initial communication packet', syste
 
 
 <p>原因：Mysql 配置文件问题</p>
-<p>解决： </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql --help|grep ‘my.cnf<span class="string">' //查看mysql允许的配置文件路径 </span></span><br><span class="line"><span class="string">sudo vi /etc/my.cnf //进行相应配置 </span></span><br><span class="line"><span class="string">sudo chmod 664 /etc/my.cnf</span></span><br></pre></td></tr></table></figure>
+<p>解决（进入配置文件后进行相应修改）： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql --help|grep ‘my.cnf’</span><br><span class="line">sudo vi /etc/my.cnf </span><br><span class="line">sudo chmod <span class="number">664</span> /etc/my.cnf</span><br></pre></td></tr></table></figure>
 <h3 id="mybatis-generator"><a href="#mybatis-generator" class="headerlink" title="mybatis-generator"></a>mybatis-generator</h3><p>使用 generator 生成文件，产生了多余的 <code>UserWithBolbs</code> 类 </p>
 <p>原因：使用了 version 8.0 的 Connector/J </p>
 <p>解决: 在 jdbcConnection 配置里新增：</p>
