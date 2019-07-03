@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="spark,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spark 优势 基于 RDD（弹性分布式数据集），抽象层次更高 计算模式属于 MapReduce，但还提供了多种转换和动作，编程模型比MapReduce 更灵活 提供内存计算，中间结果放在内存中，迭代运算效率更高（Hadoop将中间结果存放在磁盘，IO开销大） 基于有向无环图（DAG）的任务调度执行机制 支持实时处理流数据（拆分成 batch）  Spark 生态系统 spark core：包含">
+<meta name="keywords" content="spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark">
+<meta property="og:url" content="http://zyzhang.top/2019/07/03/spark_basic/index.html">
+<meta property="og:site_name" content="Zhiyi&#39;s Blog">
+<meta property="og:description" content="Spark 优势 基于 RDD（弹性分布式数据集），抽象层次更高 计算模式属于 MapReduce，但还提供了多种转换和动作，编程模型比MapReduce 更灵活 提供内存计算，中间结果放在内存中，迭代运算效率更高（Hadoop将中间结果存放在磁盘，IO开销大） 基于有向无环图（DAG）的任务调度执行机制 支持实时处理流数据（拆分成 batch）  Spark 生态系统 spark core：包含">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-03T09:05:31.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark">
+<meta name="twitter:description" content="Spark 优势 基于 RDD（弹性分布式数据集），抽象层次更高 计算模式属于 MapReduce，但还提供了多种转换和动作，编程模型比MapReduce 更灵活 提供内存计算，中间结果放在内存中，迭代运算效率更高（Hadoop将中间结果存放在磁盘，IO开销大） 基于有向无环图（DAG）的任务调度执行机制 支持实时处理流数据（拆分成 batch）  Spark 生态系统 spark core：包含">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zyzhang.top/2019/07/03/spark_basic/">
+
+
+
+
+
+  <title>Spark | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhiyi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/07/03/spark_basic/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhiyi Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spark</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-03T17:04:12+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark/Spark基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Spark-优势"><a href="#Spark-优势" class="headerlink" title="Spark 优势"></a>Spark 优势</h2><ul>
+<li>基于 RDD（弹性分布式数据集），抽象层次更高</li>
+<li>计算模式属于 MapReduce，但还提供了多种转换和动作，编程模型比MapReduce 更灵活</li>
+<li>提供内存计算，中间结果放在内存中，迭代运算效率更高（Hadoop将中间结果存放在磁盘，IO开销大）</li>
+<li>基于有向无环图（DAG）的任务调度执行机制</li>
+<li>支持实时处理流数据（拆分成 batch）</li>
+</ul>
+<h2 id="Spark-生态系统"><a href="#Spark-生态系统" class="headerlink" title="Spark 生态系统"></a>Spark 生态系统</h2><ul>
+<li>spark core：包含 spark 基本功能，如内存计算、任务调度、部署模式、存储管理等。Spark 建立在 RDD 上</li>
+<li>spark SQL：允许开发人员直接处理 RDD，同时查询 Hive，HBase 等外部数据源。使得开发人员能使用 SQL 命令进行查询和复杂的数据分析</li>
+<li>spark streaming：支持高吞吐量、可容错处理的实时流数据处理。核心思路是将流式计算分解成短小的批处理作业。支持多种数据源，例如 Kafka，TCP sockets、Flume等</li>
+<li>MLlib：提供常用的机器学习算法的实现</li>
+<li>GraphX：图计算</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h3><p>弹性分布式数据集。是分布式内存的抽象概念，提供了一种高度受限的共享内存模型（不可变的分区记录集合）</p>
+<p>通常 RDD 很大，会被分成多个分区，保存在不同节点上。原则：分区个数尽量等于集群中 CPU core 数目</p>
+<p>RDD 基本操作包括：</p>
+<ul>
+<li>转换：Transformation，定义 RDD 间相互依赖关系，每一次转换操作即生成一个新的 RDD。转换操作不会触发真正的计算</li>
+<li>动作：Action，执行计算，指定输出形式，返回结果。只有进行动作操作时，spark才会根据RDD依赖关系生成DAG，从起点开始进行真正的运算</li>
+</ul>
+<p>RDD 依赖关系分为：</p>
+<ul>
+<li>窄依赖：父RDD的一个分区只被子RDD的一个分区使用（一对一，多对一）。例如 map, filter, union</li>
+<li>宽依赖：父RDD的分区对应子RDD的多个分区（一对多）。例如 groupByKey, sortByKey</li>
+</ul>
+<h3 id="DAG"><a href="#DAG" class="headerlink" title="DAG"></a>DAG</h3><p>有向无环图，反应 RDD 之间的依赖关系 （新的 RDD 依赖于旧 RDD，于是一段程序就形成了一个 DAG）</p>
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>运行在工作节点上的一个进程，负责运行任务，并未应用程序存储数据</p>
+<h3 id="任务（Task）"><a href="#任务（Task）" class="headerlink" title="任务（Task）"></a>任务（Task）</h3><p>运行在 Executor 上的工作单元</p>
+<h3 id="作业（Job）"><a href="#作业（Job）" class="headerlink" title="作业（Job）"></a>作业（Job）</h3><p>一个作业包含多个 RDD 及应用于 RDD 的各种操作</p>
+<h3 id="阶段（Stage）"><a href="#阶段（Stage）" class="headerlink" title="阶段（Stage）"></a>阶段（Stage）</h3><p>作业的基本调度单位，一个作业分为多组任务，每组任务（任务集）被称为阶段</p>
+<p>阶段的划分原则：</p>
+<p>遇到宽依赖就断开；遇到窄依赖就将当前 RDD 加入到当前stage</p>
+<h3 id="应用（Application）"><a href="#应用（Application）" class="headerlink" title="应用（Application）"></a>应用（Application）</h3><p>一个应用由一个任务控制节点，多个job组成，每个job包含多个stage，每个stage包含多个 task</p>
+<h2 id="RDD-编程"><a href="#RDD-编程" class="headerlink" title="RDD 编程"></a>RDD 编程</h2><p>创建 RDD：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建程序执行的上下文</span></span><br><span class="line">val sc = <span class="keyword">new</span> SparkContext(“server”, “AppName”, “Sparkhome”, “Appjar”)</span><br><span class="line"><span class="comment">//读数据源，参数可以是文件名/目录/压缩包</span></span><br><span class="line">val rdd = sc.textFIle(“fileURI”)`</span><br><span class="line"><span class="comment">//执行转换操作</span></span><br><span class="line">val filterRDD = rdd.filter(_.contains(“text”)_)</span><br><span class="line"><span class="comment">// 保存在内存中</span></span><br><span class="line">filterRDD.cache()</span><br><span class="line"><span class="comment">//执行动作，触发真正的计算</span></span><br><span class="line">filterRDD.count()</span><br></pre></td></tr></table></figure>
+<h3 id="RDD-转换操作"><a href="#RDD-转换操作" class="headerlink" title="RDD 转换操作"></a>RDD 转换操作</h3><ul>
+<li>filter(func)：筛选满足函数 func 的元素，返回新的 RDD</li>
+<li>map(func)：将每个元素传递到 func 中</li>
+<li>mapValues(func)：仅对值应用函数 func</li>
+<li>flatMap(func)：每个元素可以映射多个输出结果</li>
+<li>groupByKey()：应用于(k,v)键值对的数据集时，返回一个新的(k,iterable)形式数据集。即对相同 key 的值进行分组</li>
+</ul>
+<p>e.g. <code>(&quot;spark&quot;, 1), (&quot;spark&quot;, 2), (&quot;hadoop&quot;, 3), (&quot;hadoop&quot;, 5)</code>，结果为 <code>(&quot;spark&quot;, (1,2)), (&quot;hadoop&quot;, (3,5))</code></p>
+<ul>
+<li>reduceByKey(func)：应用于(k,v)键值对的数据集时，返回一个新的(k,v)形式数据集，其中每个值是将每个 key 传递到 func 中进行聚合（合并具有相同 key 的值）</li>
+</ul>
+<p>e.g. <code>reduceByKey((a,b) =&gt; a+b)</code>，有四个键值对 <code>(&quot;spark&quot;, 1), (&quot;spark&quot;, 2), (&quot;hadoop&quot;, 3), (&quot;hadoop&quot;, 5)</code>，合并后的结果为 <code>(&quot;spark&quot;, 3), (&quot;hadoop&quot;, 8)</code></p>
+<h3 id="RDD-行动操作"><a href="#RDD-行动操作" class="headerlink" title="RDD 行动操作"></a>RDD 行动操作</h3><ul>
+<li>count()：返回元素个数</li>
+<li>collect()：以数组形式返回数据集所有元素</li>
+<li>first()：返回第一个元素</li>
+<li>take(n)：返回前 n 个元素</li>
+<li>reduce(func)：聚合数据集中的元素，func 输入两个参数返回一个值</li>
+<li>foreach(func)：将每个元素传递到func中运行</li>
+</ul>
+<p>统计文本中单行文本所包含的单词数最大值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val lines = sc.textFile(“…”)</span><br><span class="line">lines.map(line =\&gt; line.split(“ ”).size).reduce(a,b) =\&gt; <span class="keyword">if</span> (a\&gt;b) a <span class="keyword">else</span> b</span><br></pre></td></tr></table></figure>
+<h3 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val rdd = sc.parallelize(Array((“spark”, <span class="number">2</span>), (“hadoop”, <span class="number">6</span>), (“hadoop”, <span class="number">4</span>), (“spark”, <span class="number">6</span>)))</span><br><span class="line"></span><br><span class="line">rdd.mapValues(x =\&gt; (x,<span class="number">1</span>)).reduceByKey((x,y) =\&gt; (x._1 + y._1, x._2 + y._2)).mapValues(x =\&gt; (x._1 / x._2)).collect()</span><br></pre></td></tr></table></figure>
+<p>理解：</p>
+<ul>
+<li>构建包含四对键值对的数组，调用 parallelize 方法生成 RDD</li>
+<li>首先将每个键值对的 value 进行修改，转换为 (value, 1)。这里的 1 就表示该 key 出现了 1 次：<code>(“spark”, (2,1)), (“hadoop”, (6,1)), (“hadoop”, (4,1)), (“spark”, (6,1))</code></li>
+<li>x,y 是相同键对应的 value。e.g. x 为 (2,1)，y 为(6,1)，最后生成键值对( “spark”,(8,2))</li>
+<li>最后相除得到平均值，新的键值对为 (“spark”, 4)</li>
+</ul>
+<h3 id="应用程序打包"><a href="#应用程序打包" class="headerlink" title="应用程序打包"></a>应用程序打包</h3><p>将生成的 jar 包通过 spark-submit 提交到 spark 运行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/spark/bin/spark-submit —<span class="class"><span class="keyword">class</span> “<span class="title">AppName</span>” \&lt;<span class="title">jar</span>包位置\&gt;</span></span><br></pre></td></tr></table></figure>
+<p>spark-submit 格式如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./bin/spark-submit</span><br><span class="line">  —-<span class="class"><span class="keyword">class</span> \&lt;<span class="title">main</span>-<span class="title">class</span>\&gt;  //需要运行的程序主类，应用程序的入口</span></span><br><span class="line"><span class="class">  —-<span class="title">master</span> \&lt;<span class="title">master</span>-<span class="title">url</span>\&gt;  //<span class="title">local</span>或者<span class="title">server</span>或者集群</span></span><br><span class="line"><span class="class">  —-<span class="title">deploy</span>-<span class="title">mode</span> \&lt;<span class="title">deploy</span>-<span class="title">mode</span>\&gt;  //部署模式</span></span><br><span class="line"><span class="class">  \&lt;<span class="title">application</span>-<span class="title">jar</span>\&gt;  //应用程序<span class="title">jar</span>包</span></span><br><span class="line">  [application-arguments](#)  //传递给主类的主方法的参数</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spark/" rel="tag"><i class="fa fa-tag"></i> spark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/30/SSM/" rel="next" title="SSM 项目总结">
+                <i class="fa fa-chevron-left"></i> SSM 项目总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/me.jpg" alt="Zhiyi Zhang">
+            
+              <p class="site-author-name" itemprop="name">Zhiyi Zhang</p>
+              <p class="site-description motion-element" itemprop="description">love all, trust a few, do wrong to none</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/setezzy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="zhyzhang@whu.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-email"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/roodozy" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-优势"><span class="nav-number">1.</span> <span class="nav-text">Spark 优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-生态系统"><span class="nav-number">2.</span> <span class="nav-text">Spark 生态系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD"><span class="nav-number">3.1.</span> <span class="nav-text">RDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DAG"><span class="nav-number">3.2.</span> <span class="nav-text">DAG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor"><span class="nav-number">3.3.</span> <span class="nav-text">Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务（Task）"><span class="nav-number">3.4.</span> <span class="nav-text">任务（Task）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业（Job）"><span class="nav-number">3.5.</span> <span class="nav-text">作业（Job）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阶段（Stage）"><span class="nav-number">3.6.</span> <span class="nav-text">阶段（Stage）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用（Application）"><span class="nav-number">3.7.</span> <span class="nav-text">应用（Application）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD-编程"><span class="nav-number">4.</span> <span class="nav-text">RDD 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD-转换操作"><span class="nav-number">4.1.</span> <span class="nav-text">RDD 转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD-行动操作"><span class="nav-number">4.2.</span> <span class="nav-text">RDD 行动操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合实例"><span class="nav-number">4.3.</span> <span class="nav-text">综合实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序打包"><span class="nav-number">4.4.</span> <span class="nav-text">应用程序打包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhiyi Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+<span class="post-meta-divider">|</span>
+
+<span id="busuanzi_container_site_uv">
+  Total visited <span id="busuanzi_value_site_uv"></span> times
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </span></div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

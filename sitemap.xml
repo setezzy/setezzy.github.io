@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zyzhang.top/2019/07/03/spark_basic/</loc>
+    
+    <lastmod>2019-07-03T09:05:31.303Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
     
     <lastmod>2019-07-02T06:35:23.209Z</lastmod>
@@ -37,6 +44,13 @@
   </url>
   
   <url>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
     
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
@@ -45,13 +59,6 @@
   
   <url>
     <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
-    
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
     
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     
