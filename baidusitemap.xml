@@ -5,13 +5,15 @@
     
   <url>
     <loc>http://zyzhang.top/2019/07/04/Kafka/</loc>
-    <lastmod>2019-07-04T08:09:06.280Z</lastmod>
+    <lastmod>2019-07-04T08:13:32.741Z</lastmod>
     <data>
         <display>
-        <title>Spark Streaming</title>
+        <title>Kafka</title>
         <pubTime>2019-07-04T06:45:55.968Z</pubTime>
         
         <tag>spark</tag>
+         
+        <tag>kafka</tag>
          
          
            
@@ -139,6 +141,26 @@
     
     
   <url>
+    <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>在 Hexo 中渲染 Latex 公式</title>
+        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
+        
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     <data>
@@ -177,26 +199,6 @@
            
              
               <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>在 Hexo 中渲染 Latex 公式</title>
-        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
-        
-        <tag>bug</tag>
-         
-         
-           
-             
-              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
           
         </display>
     </data>
