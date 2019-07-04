@@ -141,19 +141,21 @@
     
     
   <url>
-    <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     <data>
         <display>
-        <title>在 Hexo 中渲染 Latex 公式</title>
-        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
+        <title>Ubuntu [firmware bug] 修复</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
         
+        <tag>Ubuntu</tag>
+         
         <tag>bug</tag>
          
          
            
              
-              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
           
         </display>
     </data>
@@ -184,21 +186,19 @@
 
     
   <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     <data>
         <display>
-        <title>Ubuntu [firmware bug] 修复</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        <title>在 Hexo 中渲染 Latex 公式</title>
+        <pubTime>2019-06-03T15:42:25.580Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>bug</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
+              <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
           
         </display>
     </data>
