@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/07/04/Kafka/</loc>
+    <lastmod>2019-07-04T08:09:06.280Z</lastmod>
+    <data>
+        <display>
+        <title>Spark Streaming</title>
+        <pubTime>2019-07-04T06:45:55.968Z</pubTime>
+        
+        <tag>spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
+          
+             
+              <breadCrumb title="Streaming" url="http://zyzhang.top/categories/Spark/Streaming/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
+    <lastmod>2019-07-04T06:47:50.769Z</lastmod>
+    <data>
+        <display>
+        <title>Spark Streaming</title>
+        <pubTime>2019-07-04T03:32:46.217Z</pubTime>
+        
+        <tag>spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
+          
+             
+              <breadCrumb title="Streaming" url="http://zyzhang.top/categories/Spark/Streaming/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
     <lastmod>2019-07-03T09:22:35.492Z</lastmod>
     <data>
@@ -68,7 +114,6 @@
 
     
     
-    
   <url>
     <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
     <lastmod>2019-06-03T15:42:25.589Z</lastmod>
@@ -86,6 +131,30 @@
           
              
               <breadCrumb title="Mix" url="http://zyzhang.top/categories/DeepLearning/Mix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Logistic Regression</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>classification</tag>
+         
+         
+           
+             
+              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
+          
+             
+              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>
@@ -128,29 +197,6 @@
            
              
               <breadCrumb title="Others" url="http://zyzhang.top/categories/Others/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>Logistic Regression</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
-        
-        <tag>classification</tag>
-         
-         
-           
-             
-              <breadCrumb title="MachineLearning" url="http://zyzhang.top/categories/MachineLearning/"/>
-          
-             
-              <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
           
         </display>
     </data>

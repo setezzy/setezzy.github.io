@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Ubuntu,bug,">
+  <meta name="keywords" content="spark,">
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="问题描述Ubuntu 桌面突然花屏，没办法只好强制关机后重启，结果出现 [firmware bug] 这样的提示。可以进入 grub 菜单，但进不了系统。 原因Ubuntu 内核更新，grub 菜单的默认启动项为最新的那个内核，但是新的内核貌似和现在的 CPU microcode 不兼容。 解决方法先在菜单选择 ubutu 高级选项中选择原先使用的旧内核进入系统 # 查看当前使用的内核 uname">
-<meta name="keywords" content="Ubuntu,bug">
+<meta name="description" content="创建 StreamingContextStreamingContext 对象是 Spark Streaming 程序的主入口 12345// scalaimport org.apache.spark._import org.apache.spark.streaming._val conf = new SparkConf().setAppName(&quot;name&quot;).setMaster(&quot;local[2">
+<meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu [firmware bug] 修复">
-<meta property="og:url" content="http://zyzhang.top/2019/06/03/linux firmware fixing/index.html">
+<meta property="og:title" content="Spark Streaming">
+<meta property="og:url" content="http://zyzhang.top/2019/07/04/spark_streaming/index.html">
 <meta property="og:site_name" content="Zhiyi&#39;s Blog">
-<meta property="og:description" content="问题描述Ubuntu 桌面突然花屏，没办法只好强制关机后重启，结果出现 [firmware bug] 这样的提示。可以进入 grub 菜单，但进不了系统。 原因Ubuntu 内核更新，grub 菜单的默认启动项为最新的那个内核，但是新的内核貌似和现在的 CPU microcode 不兼容。 解决方法先在菜单选择 ubutu 高级选项中选择原先使用的旧内核进入系统 # 查看当前使用的内核 uname">
+<meta property="og:description" content="创建 StreamingContextStreamingContext 对象是 Spark Streaming 程序的主入口 12345// scalaimport org.apache.spark._import org.apache.spark.streaming._val conf = new SparkConf().setAppName(&quot;name&quot;).setMaster(&quot;local[2">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-03T15:42:25.581Z">
+<meta property="og:updated_time" content="2019-07-04T06:47:50.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu [firmware bug] 修复">
-<meta name="twitter:description" content="问题描述Ubuntu 桌面突然花屏，没办法只好强制关机后重启，结果出现 [firmware bug] 这样的提示。可以进入 grub 菜单，但进不了系统。 原因Ubuntu 内核更新，grub 菜单的默认启动项为最新的那个内核，但是新的内核貌似和现在的 CPU microcode 不兼容。 解决方法先在菜单选择 ubutu 高级选项中选择原先使用的旧内核进入系统 # 查看当前使用的内核 uname">
+<meta name="twitter:title" content="Spark Streaming">
+<meta name="twitter:description" content="创建 StreamingContextStreamingContext 对象是 Spark Streaming 程序的主入口 12345// scalaimport org.apache.spark._import org.apache.spark.streaming._val conf = new SparkConf().setAppName(&quot;name&quot;).setMaster(&quot;local[2">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://zyzhang.top/2019/06/03/linux firmware fixing/">
+  <link rel="canonical" href="http://zyzhang.top/2019/07/04/spark_streaming/">
 
 
 
 
 
-  <title>Ubuntu [firmware bug] 修复 | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Spark Streaming | Zhiyi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -257,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/06/03/linux firmware fixing/">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/07/04/spark_streaming/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhiyi Zhang">
@@ -274,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu [firmware bug] 修复</h1>
+          <h1 class="post-title" itemprop="name headline">Spark Streaming</h1>
         
 
         <div class="post-meta">
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-03T23:42:25+08:00">
-                2019-06-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-04T11:32:46+08:00">
+                2019-07-04
               </time>
             
 
@@ -309,8 +309,19 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark/Streaming/" itemprop="url" rel="index">
+                    <span itemprop="name">Streaming</span>
                   </a>
                 </span>
 
@@ -346,52 +357,21 @@
       
 
       
-        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>Ubuntu 桌面突然花屏，没办法只好强制关机后重启，结果出现 [firmware bug] 这样的提示。可以进入 grub 菜单，但进不了系统。</p>
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>Ubuntu 内核更新，grub 菜单的默认启动项为最新的那个内核，但是新的内核貌似和现在的 CPU microcode 不兼容。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>先在菜单选择 ubutu 高级选项中选择原先使用的旧内核进入系统</p>
-<pre><code># 查看当前使用的内核
-uname -a
-
-# 查看系统已安装的内核
-dpkg --get-selections | grep linux
-
-# 删除多余内核
-sudo apt --purge remove linux-image-4.15.0-24-generic
-
-# 更新启动项
-sudo update-grub
-</code></pre>
-
-<p>我按上述步骤操作之后，系统启动项中还是有那个新内核。暂时没找到原因，于是我就想直接修改 grub 的默认启动项为当前使用的内核。步骤如下：</p>
-<pre><code># 查看启动菜单
-grep menuentry /boot/grub/grub.cfg
-</code></pre>
-
-<p>我的菜单项如下 (顺序依次为 0, 1, 2 …)：</p>
-<ul>
-<li>Ubuntu</li>
-<li>Advanced options for Ubuntu</li>
-<li>Memory test</li>
-<li>Memory test</li>
-<li>Windows 10</li>
-</ul>
-<p>Advanced options for Ubuntu 这个子菜单下的选项如下：</p>
-<ul>
-<li>Ubuntu, Linux 4.15.0-24-generic</li>
-<li>…</li>
-<li>Ubuntu, Linux 4.13.0-45-generic</li>
-</ul>
-<p>我想要启动的内核为 4.13.0-45，在子菜单的第 3 个选项，所以要修改 grub 默认启动项为 “1&gt; 3”。步骤如下：</p>
-<pre><code># 不要按网上一些做法修改 /boot/grub/grub.cfg，这个文件是系统自动生成的，不可更改
-sudo gedit /etc/default/grub
-
-# 修改 GRUB_DEFAULT
-GRUB_DEFAULT = "1> 3"
-
-sudo update-grub
-</code></pre>
-
-<p>重启系统后默认启动内核就变成了 4.13.0-45 了。</p>
+        <h2 id="创建-StreamingContext"><a href="#创建-StreamingContext" class="headerlink" title="创建 StreamingContext"></a>创建 StreamingContext</h2><p>StreamingContext 对象是 Spark Streaming 程序的主入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scala</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark._</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.streaming._</span><br><span class="line">val conf = <span class="keyword">new</span> SparkConf().setAppName(<span class="string">"name"</span>).setMaster(<span class="string">"local[2]"</span>) <span class="comment">//本地运行模式，两个线程，一个监听，一个处理数据</span></span><br><span class="line">val ssc = <span class="keyword">new</span> StreamingContext(conf, Seconds(<span class="number">1</span>)) <span class="comment">// seconds 表示每隔1s就自动执行一次流计算</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建输入源"><a href="#创建输入源" class="headerlink" title="创建输入源"></a>创建输入源</h2><h3 id="文件输入源"><a href="#文件输入源" class="headerlink" title="文件输入源"></a>文件输入源</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scala</span></span><br><span class="line">val lines = ssc.textFileStream(<span class="string">"file"</span>)</span><br><span class="line"><span class="comment">// 这里写一些 RDD 转换和动作</span></span><br><span class="line">ssc.start()</span><br><span class="line">ssc.awaitTermination()</span><br></pre></td></tr></table></figure>
+<h3 id="Kafka-输入源"><a href="#Kafka-输入源" class="headerlink" title="Kafka 输入源"></a>Kafka 输入源</h3><p>Kafka 为高级输入源，需要依赖独立的库（jar）：官网下载 <code>spark-streaming-kafka-version</code>相关 jar 包，保存到 Spark 目录的 jars 目录下，并将 kafka 安装目录的 libs 下所有 jar 复制到 <code>spark/jars/kafka</code> 目录下</p>
+<p>需要的 maven 依赖：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;kafka-clients&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>构建生产者：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java</span></span><br><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="comment">// broker 地址 (集群地址)</span></span><br><span class="line">props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"ip:port"</span>);</span><br><span class="line"><span class="comment">// kafka消息key的序列化方式</span></span><br><span class="line">props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line"><span class="comment">// kafka消息value的序列化方式</span></span><br><span class="line">props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">KafkaProducer&lt;String, String&gt; kafkaProducer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(props);</span><br></pre></td></tr></table></figure>
+<p>创建消息：</p>
+<p>ProducerRecord 对象即发送的信息对象，包括 topic, key(可选), value，由kafka决定分区</p>
+<p>具有相同 key 的消息会被写到同一分区</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java</span></span><br><span class="line">ProducerRecord&lt;String, String&gt; record = <span class="keyword">new</span> ProducerRecord&lt;&gt;(<span class="string">"ORDER-DETAIL"</span>, </span><br><span class="line">    <span class="comment">// 将要发送的消息序列化为JSON</span></span><br><span class="line">    JSON.toJSONString(<span class="keyword">new</span> Order(para1, para2, para3)));</span><br><span class="line"><span class="comment">// 发送消息    </span></span><br><span class="line">producer.send(record);</span><br><span class="line">producer.close();</span><br></pre></td></tr></table></figure>
+<p>创建消费者：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">props.put(<span class="string">"boostrap.servers"</span>, <span class="string">"ip:port"</span>);</span><br><span class="line"><span class="comment">// 每个消费者有独立的组号</span></span><br><span class="line">props.put(<span class="string">"group.id"</span>, <span class="string">"group_name"</span>);</span><br><span class="line"><span class="comment">// key 的反序列化方式</span></span><br><span class="line">props.put(<span class="string">"key.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>)</span><br><span class="line"><span class="comment">// value 的反序列化方式</span></span><br><span class="line">props.put(<span class="string">"value.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>);</span><br><span class="line">KafkaConsumer&lt;String, String&gt; kafkaConsumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br></pre></td></tr></table></figure>
+<p>消费者订阅topic并消费</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">KafkaConsumer.subscribe(Lists.newArrayList(<span class="string">"ORDER-DETAIL"</span>));</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="comment">// 消费者必须持续从kafka进行轮询，否则会被认为死亡</span></span><br><span class="line">        <span class="comment">// 从而导致它处理的分区被交给同一 consumer group 的其他消费者</span></span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = kafkaConsumer.poll(<span class="number">1000</span>);</span><br><span class="line">        <span class="comment">// 为防止消费者被认为死亡，需要尽可能确保处理消息工作尽快完成</span></span><br><span class="line">        <span class="keyword">for</span>(ConsumerRecord&lt;String, String&gt; record: records)&#123;</span><br><span class="line">            System.out.println(<span class="string">"message content:"</span>+GSON.toJson(record));</span><br><span class="line">            System.out.println(<span class="string">"message value:"</span>+record.value());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次消费完后异步提交</span></span><br><span class="line">        kafkaConsumer.commitAsync();</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        <span class="comment">// 消费者关闭之前同步提交</span></span><br><span class="line">        kafkaConsumer.commitSync();</span><br><span class="line">        kafkaConsumer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -409,9 +389,7 @@ sudo update-grub
       
         <div class="post-tags">
           
-            <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
-          
-            <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
+            <a href="/tags/spark/" rel="tag"><i class="fa fa-tag"></i> spark</a>
           
         </div>
       
@@ -424,8 +402,8 @@ sudo update-grub
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/03/hexo/" rel="next" title="在 Hexo 中渲染 Latex 公式">
-                <i class="fa fa-chevron-left"></i> 在 Hexo 中渲染 Latex 公式
+              <a href="/2019/07/03/spark_basic/" rel="next" title="Spark Basic">
+                <i class="fa fa-chevron-left"></i> Spark Basic
               </a>
             
           </div>
@@ -434,8 +412,8 @@ sudo update-grub
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/03/logistic_regression/" rel="prev" title="Logistic Regression">
-                Logistic Regression <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/04/Kafka/" rel="prev" title="Spark Streaming">
+                Spark Streaming <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +570,7 @@ sudo update-grub
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-StreamingContext"><span class="nav-number">1.</span> <span class="nav-text">创建 StreamingContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建输入源"><span class="nav-number">2.</span> <span class="nav-text">创建输入源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件输入源"><span class="nav-number">2.1.</span> <span class="nav-text">文件输入源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-输入源"><span class="nav-number">2.2.</span> <span class="nav-text">Kafka 输入源</span></a></li></ol></li></ol></div>
             
 
           </div>

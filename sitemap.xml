@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zyzhang.top/2019/07/04/Kafka/</loc>
+    
+    <lastmod>2019-07-04T08:09:06.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
+    
+    <lastmod>2019-07-04T06:47:50.769Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/2019/06/30/SSM/</loc>
     
     <lastmod>2019-07-03T09:22:35.492Z</lastmod>
@@ -30,6 +44,13 @@
   </url>
   
   <url>
+    <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
+    
+    <lastmod>2019-06-03T15:42:25.589Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/categories/index.html</loc>
     
     <lastmod>2019-06-03T15:42:25.589Z</lastmod>
@@ -37,9 +58,9 @@
   </url>
   
   <url>
-    <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
+    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
     
-    <lastmod>2019-06-03T15:42:25.589Z</lastmod>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     
   </url>
   
@@ -52,13 +73,6 @@
   
   <url>
     <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
-    
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/logistic_regression/</loc>
     
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     
