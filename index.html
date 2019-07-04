@@ -360,16 +360,10 @@
       
         
           
-          核心概念
-Producer：消息生产者
-
-Producer 发送消息需指定 topic，但不需指定 partition ；
+          核心概念Producer消息生产者，Producer 发送消息需指定 topic，但不需指定 partition ；
 kafka 通过 load balance自动分配 partition， 使得消息能够均匀分布
-
-Consumer：消息消费者
-
-消息的状态被保存在 consumer 中；
-读
+Consumer消息消费者，消息的状态被保存在 consumer 中；
+读取消息为顺序
           ...
           <!--noindex-->
           <div class="post-button text-center">
