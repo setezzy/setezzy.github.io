@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
+    
+    <lastmod>2020-08-17T22:30:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
+    
+    <lastmod>2019-07-08T03:20:10.823Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
+    
+    <lastmod>2019-07-08T03:19:47.993Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
     
     <lastmod>2019-07-04T09:23:01.033Z</lastmod>
@@ -44,23 +65,9 @@
   </url>
   
   <url>
-    <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
-    
-    <lastmod>2019-06-03T15:42:25.589Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zyzhang.top/categories/index.html</loc>
     
     <lastmod>2019-06-03T15:42:25.589Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
-    
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     
   </url>
   
@@ -79,9 +86,9 @@
   </url>
   
   <url>
-    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
     
-    <lastmod>2019-06-03T15:42:25.580Z</lastmod>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     
   </url>
   
@@ -89,13 +96,6 @@
     <loc>http://zyzhang.top/2019/06/03/Linux%20grub%20fixing/</loc>
     
     <lastmod>2019-06-03T15:42:25.579Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
-    
-    <lastmod>2019-06-03T15:42:25.578Z</lastmod>
     
   </url>
   
