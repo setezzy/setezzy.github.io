@@ -27,6 +27,28 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/07/08/TestNG/</loc>
+    <lastmod>2019-07-11T08:32:30.464Z</lastmod>
+    <data>
+        <display>
+        <title>TestNG 框架</title>
+        <pubTime>2019-07-08T03:25:43.207Z</pubTime>
+        
+        <tag>testing</tag>
+         
+        <tag>TestNG</tag>
+         
+         
+           
+             
+              <breadCrumb title="Testing" url="http://zyzhang.top/categories/Testing/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
     <lastmod>2019-07-08T03:23:17.429Z</lastmod>
     <data>
@@ -189,6 +211,28 @@
     
     
   <url>
+    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
+    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu [firmware bug] 修复</title>
+        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>bug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/03/hexo/</loc>
     <lastmod>2019-06-03T15:42:25.581Z</lastmod>
     <data>
@@ -225,28 +269,6 @@
           
              
               <breadCrumb title="Classification" url="http://zyzhang.top/categories/MachineLearning/Classification/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/linux%20firmware%20fixing/</loc>
-    <lastmod>2019-06-03T15:42:25.581Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu [firmware bug] 修复</title>
-        <pubTime>2019-06-03T15:42:25.581Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>bug</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://zyzhang.top/categories/Linux/"/>
           
         </display>
     </data>

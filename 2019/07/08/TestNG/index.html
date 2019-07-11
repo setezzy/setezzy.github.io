@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="spark,kafka,">
+  <meta name="keywords" content="testing,TestNG,">
 
 
 
@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="核心概念Producer消息生产者，Producer 发送消息需指定 topic，但不需指定 partition ； kafka 通过 load balance自动分配 partition， 使得消息能够均匀分布 Consumer消息消费者，消息的状态被保存在 consumer 中； 读取消息为顺序读取 （只保证一个 partition 上的有序性，partition 间为无序）； 消费者通过定位">
-<meta name="keywords" content="spark,kafka">
+<meta name="description" content="参数化测试允许使用不同的值运行相同的测试 通过@DataProvider传递参数@DataProvider注解的方法返回对象数组，也允许使用迭代器，此时测试方法会一个接一个地调用迭代器返回的值。e.g. Iterator&amp;lt;Object[]&amp;gt; 如果 DataProvider 和 test 方法不在同一个类中，需要在 test 方法注解中显式指明： @Test(dataProvider=&amp;">
+<meta name="keywords" content="testing,TestNG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kafka">
-<meta property="og:url" content="http://zyzhang.top/2019/07/04/Kafka/index.html">
+<meta property="og:title" content="TestNG 框架">
+<meta property="og:url" content="http://zyzhang.top/2019/07/08/TestNG/index.html">
 <meta property="og:site_name" content="我乐苦多">
-<meta property="og:description" content="核心概念Producer消息生产者，Producer 发送消息需指定 topic，但不需指定 partition ； kafka 通过 load balance自动分配 partition， 使得消息能够均匀分布 Consumer消息消费者，消息的状态被保存在 consumer 中； 读取消息为顺序读取 （只保证一个 partition 上的有序性，partition 间为无序）； 消费者通过定位">
+<meta property="og:description" content="参数化测试允许使用不同的值运行相同的测试 通过@DataProvider传递参数@DataProvider注解的方法返回对象数组，也允许使用迭代器，此时测试方法会一个接一个地调用迭代器返回的值。e.g. Iterator&amp;lt;Object[]&amp;gt; 如果 DataProvider 和 test 方法不在同一个类中，需要在 test 方法注解中显式指明： @Test(dataProvider=&amp;">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://zyzhang.top/2019/07/04/Kafka/structure.png">
-<meta property="og:updated_time" content="2019-07-04T08:50:13.902Z">
+<meta property="og:updated_time" content="2019-07-11T08:32:30.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka">
-<meta name="twitter:description" content="核心概念Producer消息生产者，Producer 发送消息需指定 topic，但不需指定 partition ； kafka 通过 load balance自动分配 partition， 使得消息能够均匀分布 Consumer消息消费者，消息的状态被保存在 consumer 中； 读取消息为顺序读取 （只保证一个 partition 上的有序性，partition 间为无序）； 消费者通过定位">
-<meta name="twitter:image" content="http://zyzhang.top/2019/07/04/Kafka/structure.png">
+<meta name="twitter:title" content="TestNG 框架">
+<meta name="twitter:description" content="参数化测试允许使用不同的值运行相同的测试 通过@DataProvider传递参数@DataProvider注解的方法返回对象数组，也允许使用迭代器，此时测试方法会一个接一个地调用迭代器返回的值。e.g. Iterator&amp;lt;Object[]&amp;gt; 如果 DataProvider 和 test 方法不在同一个类中，需要在 test 方法注解中显式指明： @Test(dataProvider=&amp;">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://zyzhang.top/2019/07/04/Kafka/">
+  <link rel="canonical" href="http://zyzhang.top/2019/07/08/TestNG/">
 
 
 
 
 
-  <title>Kafka | 我乐苦多</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>TestNG 框架 | 我乐苦多</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -259,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/07/04/Kafka/">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/07/08/TestNG/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhiyi Zhang">
@@ -276,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kafka</h1>
+          <h1 class="post-title" itemprop="name headline">TestNG 框架</h1>
         
 
         <div class="post-meta">
@@ -288,8 +286,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-04T14:45:55+08:00">
-                2019-07-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T11:25:43+08:00">
+                2019-07-08
               </time>
             
 
@@ -311,19 +309,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spark/" itemprop="url" rel="index">
-                    <span itemprop="name">Spark</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spark/Streaming/" itemprop="url" rel="index">
-                    <span itemprop="name">Streaming</span>
+                  <a href="/categories/Testing/" itemprop="url" rel="index">
+                    <span itemprop="name">Testing</span>
                   </a>
                 </span>
 
@@ -359,35 +346,21 @@
       
 
       
-        <h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h3><p>消息生产者，Producer 发送消息需指定 topic，但不需指定 partition ；</p>
-<p>kafka 通过 load balance自动分配 partition， 使得消息能够均匀分布</p>
-<h3 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h3><p>消息消费者，消息的状态被保存在 consumer 中；</p>
-<p>读取消息为顺序读取 （只保证一个 partition 上的有序性，partition 间为无序）；</p>
-<p>消费者通过定位自己的 offset 定位并读取消息</p>
-<ul>
-<li>ConsumerGroup：</li>
-</ul>
-<p>分区的每条消息只能被group内的一个消费者消费；同一 group 的多个 consumer 可以消费同一个 topic，但不能同时消费一个 partition</p>
-<p>consumer 数目最好不要大于 partition 数目 （partition不允许并发，会造成浪费）</p>
-<h3 id="Broker"><a href="#Broker" class="headerlink" title="Broker"></a>Broker</h3><p>Kafka 节点 （用于引用服务器），多个 broker 组成一个 kafka 集群</p>
-<p>节点间通信通过 zookeeper 管理</p>
-<h3 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h3><p>消息源的不同分类，Kafka 集群能同时处理多个 topic 的分发</p>
-<h3 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h3><p>topic 的物理分区，每个分区为一个有序队列</p>
-<p>分区内每条消息都会被分配一个有序的Id (offset)，消费者可以在请求中指定 offset，获取某特定位置开始的消息</p>
-<p>每个 partition 可以在 kafka broker 节点上存储 replica 副本 (follower)，以便某一个 broker 宕机时不会影响整个 kafka 集Producer 写 kafka 时先写 partition leader，再由 leader push 给其他 follower。一旦某 broker 宕机，zookeeper 会选择一个 follower 变成 leader</p>
-<h3 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h3><p>消息</p>
-<h3 id="Producers"><a href="#Producers" class="headerlink" title="Producers"></a>Producers</h3><p>向 kafka 的一个 topic 发送消息的过程</p>
-<h3 id="Consumers"><a href="#Consumers" class="headerlink" title="Consumers"></a>Consumers</h3><p>订阅 topic 并消费的过程</p>
-<h3 id="拓扑图："><a href="#拓扑图：" class="headerlink" title="拓扑图："></a>拓扑图：</h3><p><img src="/2019/07/04/Kafka/structure.png" alt=""></p>
-<h2 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h2><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>生产者消息序列化后才能发送，对应的代码为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="comment">// broker 地址 (集群地址)</span></span><br><span class="line">props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"ip:port"</span>);</span><br><span class="line"><span class="comment">// kafka消息key的序列化方式</span></span><br><span class="line">props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line"><span class="comment">// kafka消息value的序列化方式</span></span><br><span class="line">props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">KafkaProducer&lt;String, String&gt; kafkaProducer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(props);</span><br></pre></td></tr></table></figure>
-<p><code>StringSerializer</code> 为内置的字符串序列化方式，通过 <code>getBytes(&quot;UTF8&quot;)</code> 来实现</p>
-<p>若自定义序列化需实现 <code>Serializer</code> 接口</p>
-<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>消费者需要反序列化消息后才能得到真实内容，对应代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">props.put(<span class="string">"boostrap.servers"</span>, <span class="string">"ip:port"</span>);</span><br><span class="line"><span class="comment">// 每个消费者有独立的组号</span></span><br><span class="line">props.put(<span class="string">"group.id"</span>, <span class="string">"group_name"</span>);</span><br><span class="line"><span class="comment">// key 的反序列化方式</span></span><br><span class="line">props.put(<span class="string">"key.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>)</span><br><span class="line"><span class="comment">// value 的反序列化方式</span></span><br><span class="line">props.put(<span class="string">"value.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>);</span><br><span class="line">KafkaConsumer&lt;String, String&gt; kafkaConsumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br></pre></td></tr></table></figure>
-<p><code>StringDeserializer</code> 为内置的字符串反序列化方式，通过 <code>new String(data, &quot;UTF8&quot;)</code> 实现</p>
-<p>若自定义序列化需实现 <code>Deserializer</code> 接口</p>
-<p>推荐使用 json 作为标准数据传输格式，使用内置的序列化和反序列化</p>
+        <h2 id="参数化测试"><a href="#参数化测试" class="headerlink" title="参数化测试"></a>参数化测试</h2><p>允许使用不同的值运行相同的测试</p>
+<h3 id="通过-DataProvider传递参数"><a href="#通过-DataProvider传递参数" class="headerlink" title="通过@DataProvider传递参数"></a>通过@DataProvider传递参数</h3><p><code>@DataProvider</code>注解的方法返回对象数组，也允许使用迭代器，此时测试方法会一个接一个地调用迭代器返回的值。e.g. <code>Iterator&lt;Object[]&gt;</code></p>
+<p>如果 DataProvider 和 test 方法不在同一个类中，需要在 test 方法注解中显式指明：</p>
+<p><code>@Test(dataProvider=&quot;&quot;, dataProviderClass=&quot;xx.class&quot;)</code></p>
+<p><strong>支持传递一组参数</strong></p>
+<p>下面的例子，DataProvider返回的是一个二维数组，test 方法被执行的次数与 <code>object[][]</code> 包含的一维数组的个数一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestParameterDataProvider</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span>(dataProvider = <span class="string">"provideNumbers"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> number, <span class="keyword">int</span> expected)</span> </span>&#123;</span><br><span class="line">        Assert.assertEquals(number + <span class="number">10</span>, expected);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DataProvider</span>(name = <span class="string">"provideNumbers"</span>)</span><br><span class="line">    <span class="keyword">public</span> Object[][] provideData() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Object[][] &#123; &#123; <span class="number">10</span>, <span class="number">20</span> &#125;, &#123; <span class="number">100</span>, <span class="number">110</span> &#125;, &#123; <span class="number">200</span>, <span class="number">210</span> &#125; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行上述代码，即运行三个测试用例</p>
+<p><strong>支持传递对象参数</strong></p>
+<p>例如 Map 对象，在 <code>@Peovider</code>注解的方法内通过 <code>put()</code> 函数传入 key, value，在 <code>@Test</code>注解的方法内遍历迭代器获取参数</p>
+<p><strong>根据方法名传递参数</strong></p>
+<p>通过反射获取当前测试方法的方法名，作为参数传递给<code>method</code></p>
+<p>下面的例子为在 <code>@DataProvider</code>注解的方法内通过条件判断，根据方法名传入不同参数</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> org.testng.Assert;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.DataProvider;</span><br><span class="line"><span class="keyword">import</span> org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestParameterDataProvider3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span>(dataProvider = <span class="string">"dataProvider"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">(<span class="keyword">int</span> number, <span class="keyword">int</span> expected)</span> </span>&#123;</span><br><span class="line">        Assert.assertEquals(number, expected);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span>(dataProvider = <span class="string">"dataProvider"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">(String email, String expected)</span> </span>&#123;</span><br><span class="line">        Assert.assertEquals(email, expected);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DataProvider</span>(name = <span class="string">"dataProvider"</span>)</span><br><span class="line">    <span class="keyword">public</span> Object[][] provideData(Method method) &#123;</span><br><span class="line"></span><br><span class="line">        Object[][] result = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (method.getName().equals(<span class="string">"test1"</span>)) &#123;</span><br><span class="line">            result = <span class="keyword">new</span> Object[][] &#123;</span><br><span class="line">                &#123; <span class="number">1</span>, <span class="number">1</span> &#125;, &#123; <span class="number">200</span>, <span class="number">200</span> &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.getName().equals(<span class="string">"test2"</span>)) &#123;</span><br><span class="line">            result = <span class="keyword">new</span> Object[][] &#123;</span><br><span class="line">                &#123; <span class="string">"test@gmail.com"</span>, <span class="string">"test@gmail.com"</span> &#125;,</span><br><span class="line">                &#123; <span class="string">"test@yahoo.com"</span>, <span class="string">"test@yahoo.com"</span> &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <strong>ITestCOntext 运行时参数</strong></p>
 
       
     </div>
@@ -405,9 +378,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spark/" rel="tag"><i class="fa fa-tag"></i> spark</a>
+            <a href="/tags/testing/" rel="tag"><i class="fa fa-tag"></i> testing</a>
           
-            <a href="/tags/kafka/" rel="tag"><i class="fa fa-tag"></i> kafka</a>
+            <a href="/tags/TestNG/" rel="tag"><i class="fa fa-tag"></i> TestNG</a>
           
         </div>
       
@@ -420,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/04/spark_streaming/" rel="next" title="Spark Streaming">
-                <i class="fa fa-chevron-left"></i> Spark Streaming
+              <a href="/2019/07/04/Kafka/" rel="next" title="Kafka">
+                <i class="fa fa-chevron-left"></i> Kafka
               </a>
             
           </div>
@@ -429,10 +402,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/08/TestNG/" rel="prev" title="TestNG 框架">
-                TestNG 框架 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">1.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Producer"><span class="nav-number">1.1.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer"><span class="nav-number">1.2.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broker"><span class="nav-number">1.3.</span> <span class="nav-text">Broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topic"><span class="nav-number">1.4.</span> <span class="nav-text">Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition"><span class="nav-number">1.5.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Message"><span class="nav-number">1.6.</span> <span class="nav-text">Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producers"><span class="nav-number">1.7.</span> <span class="nav-text">Producers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumers"><span class="nav-number">1.8.</span> <span class="nav-text">Consumers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑图："><span class="nav-number">1.9.</span> <span class="nav-text">拓扑图：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化和反序列化"><span class="nav-number">2.</span> <span class="nav-text">序列化和反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化"><span class="nav-number">2.1.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反序列化"><span class="nav-number">2.2.</span> <span class="nav-text">反序列化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数化测试"><span class="nav-number">1.</span> <span class="nav-text">参数化测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-DataProvider传递参数"><span class="nav-number">1.1.</span> <span class="nav-text">通过@DataProvider传递参数</span></a></li></ol></li></ol></div>
             
 
           </div>
