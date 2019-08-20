@@ -27,6 +27,48 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/08/20/consumer/</loc>
+    <lastmod>2019-08-20T09:21:37.546Z</lastmod>
+    <data>
+        <display>
+        <title>Kafka consumer 消费问题</title>
+        <pubTime>2019-08-20T03:35:26.911Z</pubTime>
+        
+        <tag>kafka</tag>
+         
+        <tag>consumer</tag>
+         
+         
+           
+             
+              <breadCrumb title="Kafka" url="http://zyzhang.top/categories/Kafka/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/07/04/Kafka/</loc>
+    <lastmod>2019-08-20T03:37:40.649Z</lastmod>
+    <data>
+        <display>
+        <title>Kafka 基础</title>
+        <pubTime>2019-07-04T06:45:55.968Z</pubTime>
+        
+        <tag>kafka</tag>
+         
+         
+           
+             
+              <breadCrumb title="Kafka" url="http://zyzhang.top/categories/Kafka/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/07/08/TestNG/</loc>
     <lastmod>2019-07-11T08:32:30.464Z</lastmod>
     <data>
@@ -136,31 +178,6 @@
           
              
               <breadCrumb title="Basic" url="http://zyzhang.top/categories/Spark/Basic/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/07/04/Kafka/</loc>
-    <lastmod>2019-07-04T08:50:13.902Z</lastmod>
-    <data>
-        <display>
-        <title>Kafka</title>
-        <pubTime>2019-07-04T06:45:55.968Z</pubTime>
-        
-        <tag>spark</tag>
-         
-        <tag>kafka</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
-          
-             
-              <breadCrumb title="Streaming" url="http://zyzhang.top/categories/Spark/Streaming/"/>
           
         </display>
     </data>

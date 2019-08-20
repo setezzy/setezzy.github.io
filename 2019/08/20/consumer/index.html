@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="kafka,consumer,">
 
 
 
@@ -83,16 +83,18 @@
 
 
 
-<meta name="description" content="love all, trust a few, do wrong to none">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我乐苦多">
-<meta property="og:url" content="http://zyzhang.top/tags/TestNG/index.html">
+<meta name="description" content="pull or push一般消息中间件存在推送和拉取两种方式获取服务器数据，而 kafka consumer 采用的是主动拉取 broker 数据进行消费 原因在于服务器推送速度可能与 consumer 消费速度不匹配，特别是 consumer 中执行比较复杂和耗时的业务处理时，consumer 可能会不堪重负导致系统故障 选择主动拉取的方式可以避免这类问题，consumer 可以根据自己的状态拉">
+<meta name="keywords" content="kafka,consumer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka consumer 消费问题">
+<meta property="og:url" content="http://zyzhang.top/2019/08/20/consumer/index.html">
 <meta property="og:site_name" content="我乐苦多">
-<meta property="og:description" content="love all, trust a few, do wrong to none">
+<meta property="og:description" content="pull or push一般消息中间件存在推送和拉取两种方式获取服务器数据，而 kafka consumer 采用的是主动拉取 broker 数据进行消费 原因在于服务器推送速度可能与 consumer 消费速度不匹配，特别是 consumer 中执行比较复杂和耗时的业务处理时，consumer 可能会不堪重负导致系统故障 选择主动拉取的方式可以避免这类问题，consumer 可以根据自己的状态拉">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-20T09:21:37.546Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我乐苦多">
-<meta name="twitter:description" content="love all, trust a few, do wrong to none">
+<meta name="twitter:title" content="Kafka consumer 消费问题">
+<meta name="twitter:description" content="pull or push一般消息中间件存在推送和拉取两种方式获取服务器数据，而 kafka consumer 采用的是主动拉取 broker 数据进行消费 原因在于服务器推送速度可能与 consumer 消费速度不匹配，特别是 consumer 中执行比较复杂和耗时的业务处理时，consumer 可能会不堪重负导致系统故障 选择主动拉取的方式可以避免这类问题，consumer 可以根据自己的状态拉">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://zyzhang.top/tags/TestNG/">
+  <link rel="canonical" href="http://zyzhang.top/2019/08/20/consumer/">
 
 
 
 
 
-  <title>Tag: TestNG | 我乐苦多</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Kafka consumer 消费问题 | 我乐苦多</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +149,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -241,52 +243,208 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>TestNG<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zyzhang.top/2019/08/20/consumer/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhiyi Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我乐苦多">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/07/08/TestNG/" itemprop="url">
-              
-                <span itemprop="name">TestNG 框架</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Kafka consumer 消费问题</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-08T11:25:43+08:00" content="2019-07-08">
-          07-08
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-20T11:35:26+08:00">
+                2019-08-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kafka/" itemprop="url" rel="index">
+                    <span itemprop="name">Kafka</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="pull-or-push"><a href="#pull-or-push" class="headerlink" title="pull or push"></a>pull or push</h2><p>一般消息中间件存在推送和拉取两种方式获取服务器数据，而 kafka consumer 采用的是主动拉取 broker 数据进行消费</p>
+<p>原因在于服务器推送速度可能与 consumer 消费速度不匹配，特别是 consumer 中执行比较复杂和耗时的业务处理时，consumer 可能会不堪重负导致系统故障</p>
+<p>选择主动拉取的方式可以避免这类问题，consumer 可以根据自己的状态拉取数据，对数据进行延迟处理</p>
+<h2 id="消费精准性问题"><a href="#消费精准性问题" class="headerlink" title="消费精准性问题"></a>消费精准性问题</h2><h3 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h3><p>关于 offset 有两个核心概念：</p>
+<ul>
+<li>Last committed offset：consumer group 最新一次提交的 offset，表明这之前的数据都已经消费成功</li>
+<li>Current Position：当前数据的 offset，即 last committed offset 到 current position 之间的消息拉取成果，可能正在处理，还未提交</li>
+</ul>
+<p>消费者与服务器的消费确认非常重要，异步模式下 committed offset 落后于 current position，一旦 consumer 出现故障，下一次消费又只会从 committed offset 开始拉取数据，导致重复消费。</p>
+<h3 id="Kafka-消息分发语义"><a href="#Kafka-消息分发语义" class="headerlink" title="Kafka 消息分发语义"></a>Kafka 消息分发语义</h3><ul>
+<li><p>at-most-once：消息可能丢失，但不会重复消费</p>
+<p> 读取消息 — 保存位置 — 处理消息</p>
+</li>
+<li><p>at-least-once：消息不会丢失，但可能重复消费</p>
+<p> 读取消息 — 处理消息 — 保存位置</p>
+</li>
+<li><p>exactly-once：精确消费</p>
+<p> 自己管理 commit offset；在重新启动时使用 seek(TopicPartition, long) 来恢复上次消费的位置</p>
+</li>
+</ul>
+<h3 id="Kafka-提交策略"><a href="#Kafka-提交策略" class="headerlink" title="Kafka 提交策略"></a>Kafka 提交策略</h3><ul>
+<li>自动提交</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">props.put(<span class="string">"enable.auto.commit"</span>, <span class="string">"true"</span>);</span><br><span class="line"><span class="comment">// 设置自动提交的时间间隔</span></span><br><span class="line">props.put(<span class="string">"auto.commit.interval.ms"</span>, <span class="string">"1000"</span>);</span><br></pre></td></tr></table></figure>
+<p>由 poll 方法提交 offset</p>
+<ul>
+<li>手动同步提交</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">consumer.commitSync();</span><br></pre></td></tr></table></figure>
+<p>提交成功马上返回，否则抛出异常</p>
+<ul>
+<li>手动异步提交</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">consumer.commitAsync();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同步异步组合提交</li>
+</ul>
+<p>可以在消息处理后异步提交，在 consumer close 前同步提交一次</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kafka/" rel="tag"><i class="fa fa-tag"></i> kafka</a>
+          
+            <a href="/tags/consumer/" rel="tag"><i class="fa fa-tag"></i> consumer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/08/TestNG/" rel="next" title="TestNG 框架">
+                <i class="fa fa-chevron-left"></i> TestNG 框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -294,6 +452,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -314,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -399,6 +570,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pull-or-push"><span class="nav-number">1.</span> <span class="nav-text">pull or push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费精准性问题"><span class="nav-number">2.</span> <span class="nav-text">消费精准性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offset"><span class="nav-number">2.1.</span> <span class="nav-text">offset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-消息分发语义"><span class="nav-number">2.2.</span> <span class="nav-text">Kafka 消息分发语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-提交策略"><span class="nav-number">2.3.</span> <span class="nav-text">Kafka 提交策略</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -540,6 +727,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
