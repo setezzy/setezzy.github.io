@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
+    
+    <lastmod>2019-08-26T08:17:35.980Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/07/03/spark_basic/</loc>
+    
+    <lastmod>2019-08-26T08:17:30.398Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
+    
+    <lastmod>2019-08-26T08:16:56.768Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
     
-    <lastmod>2020-08-17T22:30:00.000Z</lastmod>
+    <lastmod>2019-08-26T08:16:29.781Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
+    
+    <lastmod>2019-08-26T08:16:16.671Z</lastmod>
     
   </url>
   
@@ -40,34 +68,6 @@
     <loc>http://zyzhang.top/2019/07/08/TestNG/</loc>
     
     <lastmod>2019-07-11T08:32:30.464Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
-    
-    <lastmod>2019-07-08T03:23:17.429Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
-    
-    <lastmod>2019-07-08T03:23:09.052Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
-    
-    <lastmod>2019-07-04T09:23:01.033Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zyzhang.top/2019/07/03/spark_basic/</loc>
-    
-    <lastmod>2019-07-04T09:03:24.307Z</lastmod>
     
   </url>
   

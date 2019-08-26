@@ -4,8 +4,68 @@
 
     
   <url>
+    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
+    <lastmod>2019-08-26T08:17:35.980Z</lastmod>
+    <data>
+        <display>
+        <title>Spark Streaming</title>
+        <pubTime>2019-07-04T03:32:46.217Z</pubTime>
+        
+        <tag>spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/07/03/spark_basic/</loc>
+    <lastmod>2019-08-26T08:17:30.398Z</lastmod>
+    <data>
+        <display>
+        <title>Spark Basic</title>
+        <pubTime>2019-07-03T09:04:12.425Z</pubTime>
+        
+        <tag>spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
+    <lastmod>2019-08-26T08:16:56.768Z</lastmod>
+    <data>
+        <display>
+        <title>卷积神经网络 LeNet5 及 TensorFlow 实战</title>
+        <pubTime>2019-06-03T15:42:25.578Z</pubTime>
+        
+        <tag>DNN</tag>
+         
+         
+           
+             
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zyzhang.top/2019/06/03/tensorflow%20installation/</loc>
-    <lastmod>2020-08-17T22:30:00.000Z</lastmod>
+    <lastmod>2019-08-26T08:16:29.781Z</lastmod>
     <data>
         <display>
         <title>TensorFlow安装</title>
@@ -18,8 +78,27 @@
              
               <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
+    <lastmod>2019-08-26T08:16:16.671Z</lastmod>
+    <data>
+        <display>
+        <title>基于Keras的数据增广实现</title>
+        <pubTime>2019-06-03T15:42:25.579Z</pubTime>
+        
+        <tag>keras</tag>
+         
+        <tag>data augmentation</tag>
+         
+         
+           
              
-              <breadCrumb title="Mix" url="http://zyzhang.top/categories/DeepLearning/Mix/"/>
+              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
           
         </display>
     </data>
@@ -129,100 +208,6 @@
            
              
               <breadCrumb title="Testing" url="http://zyzhang.top/categories/Testing/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/LeNet5/</loc>
-    <lastmod>2019-07-08T03:23:17.429Z</lastmod>
-    <data>
-        <display>
-        <title>卷积神经网络 LeNet5 及 TensorFlow 实战</title>
-        <pubTime>2019-06-03T15:42:25.578Z</pubTime>
-        
-        <tag>CNN</tag>
-         
-         
-           
-             
-              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
-          
-             
-              <breadCrumb title="DNN" url="http://zyzhang.top/categories/DeepLearning/DNN/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/06/03/augmentation/</loc>
-    <lastmod>2019-07-08T03:23:09.052Z</lastmod>
-    <data>
-        <display>
-        <title>基于Keras的数据增广实现</title>
-        <pubTime>2019-06-03T15:42:25.579Z</pubTime>
-        
-        <tag>keras</tag>
-         
-        <tag>data augmentation</tag>
-         
-         
-           
-             
-              <breadCrumb title="DeepLearning" url="http://zyzhang.top/categories/DeepLearning/"/>
-          
-             
-              <breadCrumb title="augmentation" url="http://zyzhang.top/categories/DeepLearning/augmentation/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/07/04/spark_streaming/</loc>
-    <lastmod>2019-07-04T09:23:01.033Z</lastmod>
-    <data>
-        <display>
-        <title>Spark Streaming</title>
-        <pubTime>2019-07-04T03:32:46.217Z</pubTime>
-        
-        <tag>spark</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
-          
-             
-              <breadCrumb title="Streaming" url="http://zyzhang.top/categories/Spark/Streaming/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zyzhang.top/2019/07/03/spark_basic/</loc>
-    <lastmod>2019-07-04T09:03:24.307Z</lastmod>
-    <data>
-        <display>
-        <title>Spark Basic</title>
-        <pubTime>2019-07-03T09:04:12.425Z</pubTime>
-        
-        <tag>spark</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spark" url="http://zyzhang.top/categories/Spark/"/>
-          
-             
-              <breadCrumb title="Basic" url="http://zyzhang.top/categories/Spark/Basic/"/>
           
         </display>
     </data>
