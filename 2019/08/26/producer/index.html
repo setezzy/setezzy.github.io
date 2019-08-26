@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="我乐苦多">
 <meta property="og:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T08:06:07.531Z">
+<meta property="og:updated_time" content="2019-08-26T08:08:36.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka producer 消息发送问题">
 <meta name="twitter:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
@@ -350,9 +350,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(record != <span class="keyword">null</span>)&#123;</span><br><span class="line">    kafkaProducer.send(record, (recordMetadata, e) -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span>(e != <span class="keyword">null</span>)&#123;</span><br><span class="line">            log.warn(<span class="string">"fail to send message"</span>, e)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 打印 metadata 信息</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后通过找资料找到了问题所在，我在这里对 producer 消息发送时可能存在的问题进行一些总结</p>
 <h3 id="Kafka-消息发送流程"><a href="#Kafka-消息发送流程" class="headerlink" title="Kafka 消息发送流程"></a>Kafka 消息发送流程</h3><ol>
-<li><p>new kafkaProducer() 后会创建一个后台 IOThread，消息真正的发送与回调都是在该后台线程中执行的</p>
+<li><p><code>new kafkaProducer()</code> 后会创建一个后台 IOThread，消息真正的发送与回调都是在该后台线程中执行的</p>
 </li>
-<li><p>kafkaProducer.send() 实际上是将消息保存到 <code>RecordAccumulator</code> 中 （ConcurrentMap<topicpartition, dequeue<producerbatch="">&gt;），同一 topic 同一分区为一个批次，这批次的消息就被保存到了一个双向队列中</topicpartition,></p>
+<li><p><code>kafkaProducer.send()</code> 实际上是将消息保存到 <code>RecordAccumulator</code> 中 （ConcurrentMap<topicpartition, dequeue<producerbatch="">&gt;），同一 topic 同一分区为一个批次，这批次的消息就被保存到了一个双向队列中</topicpartition,></p>
 </li>
 <li><p>后端线程会扫描 accumulator 资源池，将消息发送到 Kafka broker</p>
 </li>
@@ -369,8 +369,8 @@
 </li>
 </ul>
 <p>该方式是通过调用 <code>send</code> 方法返回的 Future 对象的 <code>get()</code> 方法，阻塞等待消息发送完成</p>
-<p>同步方法相比于异步方法较为耗时，所以一般推荐采用异步回调来发送 Kafka 消息</p>
-<p>这时可能产生的问题是：</p>
+<h3 id="问题及解决"><a href="#问题及解决" class="headerlink" title="问题及解决"></a>问题及解决</h3><p>同步方法相比于异步方法较为耗时，所以一般推荐采用异步回调来发送 Kafka 消息</p>
+<p>这时可能出现以下问题：</p>
 <p>主线程退出，但后台 IO 线程还没有来得及从队列中获取消息和发送给 broker，使得消息丢失</p>
 <p>解决方案：</p>
 <ul>
@@ -574,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-消息发送流程"><span class="nav-number">1.</span> <span class="nav-text">Kafka 消息发送流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-消息发送方式"><span class="nav-number">2.</span> <span class="nav-text">Kafka 消息发送方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-消息发送流程"><span class="nav-number">1.</span> <span class="nav-text">Kafka 消息发送流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-消息发送方式"><span class="nav-number">2.</span> <span class="nav-text">Kafka 消息发送方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题及解决"><span class="nav-number">3.</span> <span class="nav-text">问题及解决</span></a></li></ol></div>
             
 
           </div>
