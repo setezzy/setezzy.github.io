@@ -28,10 +28,10 @@
     
   <url>
     <loc>http://zyzhang.top/2019/08/26/producer/</loc>
-    <lastmod>2019-08-26T08:00:10.850Z</lastmod>
+    <lastmod>2019-08-26T08:02:20.205Z</lastmod>
     <data>
         <display>
-        <title>Kafka producer 消息发送失败问题</title>
+        <title>Kafka producer 消息发送问题</title>
         <pubTime>2019-08-26T03:44:45.477Z</pubTime>
         
         <tag>kafka</tag>
