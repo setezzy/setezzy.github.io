@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="我乐苦多">
 <meta property="og:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T08:08:36.972Z">
+<meta property="og:updated_time" content="2019-08-26T08:10:59.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka producer 消息发送问题">
 <meta name="twitter:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
@@ -352,7 +352,7 @@
 <h3 id="Kafka-消息发送流程"><a href="#Kafka-消息发送流程" class="headerlink" title="Kafka 消息发送流程"></a>Kafka 消息发送流程</h3><ol>
 <li><p><code>new kafkaProducer()</code> 后会创建一个后台 IOThread，消息真正的发送与回调都是在该后台线程中执行的</p>
 </li>
-<li><p><code>kafkaProducer.send()</code> 实际上是将消息保存到 <code>RecordAccumulator</code> 中 （ConcurrentMap<topicpartition, dequeue<producerbatch="">&gt;），同一 topic 同一分区为一个批次，这批次的消息就被保存到了一个双向队列中</topicpartition,></p>
+<li><p><code>kafkaProducer.send()</code> 实际上是将消息保存到 <code>RecordAccumulator</code> 中 （<code>ConcurrentMap&lt;TopicPartition, Dequeue&lt;ProducerBatch&gt;&gt;</code>），同一 topic 同一分区为一个批次，这批次的消息就被保存到了一个双向队列中</p>
 </li>
 <li><p>后端线程会扫描 accumulator 资源池，将消息发送到 Kafka broker</p>
 </li>
