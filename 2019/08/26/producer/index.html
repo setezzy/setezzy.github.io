@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="kafka,producer,">
+  <meta name="keywords" content="kafka,">
 
 
 
@@ -84,14 +84,14 @@
 
 
 <meta name="description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
-<meta name="keywords" content="kafka,producer">
+<meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka producer 消息发送问题">
 <meta property="og:url" content="http://zyzhang.top/2019/08/26/producer/index.html">
 <meta property="og:site_name" content="我乐苦多">
 <meta property="og:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T08:10:59.898Z">
+<meta property="og:updated_time" content="2019-08-27T01:27:14.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka producer 消息发送问题">
 <meta name="twitter:description" content="在项目中采用了异步回调的方式发 Kafka 消息，结果程序执行后并没有打印任何信息 123456789if(record != null)&amp;#123;    kafkaProducer.send(record, (recordMetadata, e) -&amp;gt; &amp;#123;        if(e != null)&amp;#123;            log.warn(&quot;fail to send">
@@ -377,7 +377,8 @@
 <li>采用同步方式，即 <code>.send().get()</code></li>
 <li><code>Thread.sleep()</code>，让主线程睡眠一段时间，使后台线程有时间将消息发送出去</li>
 </ul>
-<p>参考博客：<a href="https://blog.csdn.net/qyhuiiq/article/details/88757209" target="_blank" rel="noopener">一次Kafka producer 没有 close 引起的思考</a></p>
+<p>&nbsp;<br>&nbsp;</p>
+<p>参考博客：<br><a href="http://generalthink.github.io/2019/03/07/kafka-producer-source-code-analysis/" target="_blank" rel="noopener">Kafka producer 源码解析</a><br><a href="https://blog.csdn.net/qyhuiiq/article/details/88757209" target="_blank" rel="noopener">一次Kafka producer 没有 close 引起的思考</a></p>
 
       
     </div>
@@ -396,8 +397,6 @@
         <div class="post-tags">
           
             <a href="/tags/kafka/" rel="tag"><i class="fa fa-tag"></i> kafka</a>
-          
-            <a href="/tags/producer/" rel="tag"><i class="fa fa-tag"></i> producer</a>
           
         </div>
       
@@ -519,7 +518,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
