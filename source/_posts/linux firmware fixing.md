@@ -4,7 +4,6 @@ categories:
   - Linux
 tags:
   - bug
-  - Ubuntu
 ---
 
 # 问题描述

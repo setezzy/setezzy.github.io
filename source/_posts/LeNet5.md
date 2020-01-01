@@ -2,9 +2,8 @@
 title: 卷积神经网络 LeNet5 及 TensorFlow 实战
 categories:
   - DeepLearning
-  - DNN
 tags:
-  - CNN
+  - DNN
 ---
 
 LeNet-5 是 Yann LeCun 提出的经典 CNN 模型，本篇介绍 LeNet-5 的结构以及在 TensorFlow MNIST 数据集上的实现。

@@ -22,9 +22,9 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 解决：添加以下jar包：`jackson-databind`, `jackson-core`, `jackson-annotations` 
  
+ 
 ```java
 PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index 
-
 ```
 
 原因：当controller返回一个路径的时候，该路径（/index.jsp）被当作一个请求被dispatcherServlet 拦截，所以抛出异常 
@@ -54,20 +54,18 @@ PageNotFound:1248 - No mapping for GET /shop_war_exploded/user/index
 
 连接数据库时出错：
 
-<pre><code>
+```java
 Lost connection to MySQL server at 'reading initial communication packet', system error: 102
-</code></pre>
- 
+```
 
-原因：Mysql 配置文件问题
+ 原因：Mysql 配置文件问题
  
 解决（进入配置文件后进行相应修改）： 
 
 ```java
-mysql --help|grep ‘my.cnf’
+mysql --help|grep 'my.cnf'
 sudo vi /etc/my.cnf 
 sudo chmod 664 /etc/my.cnf 
-
 ```
 
 
@@ -87,7 +85,6 @@ sudo chmod 664 /etc/my.cnf
     <!--新增下面这句-->
     <property name="nullCatalogMeansCurrent" value="true" />
 </jdbcConnection>
-
 ``` 
 
 
@@ -95,10 +92,9 @@ sudo chmod 664 /etc/my.cnf
 
 在插入数据库时提示： 
 
-<pre><code>
-You have an error in you SQL syntax … near 'insert into order ...' 
-</code></pre>
-
+```java
+You have an error in you SQL syntax … near "insert into order ..."
+```
  
 原因：order 为 mysql 关键字 
 
@@ -111,9 +107,9 @@ You have an error in you SQL syntax … near 'insert into order ...'
 
 传入两个参数进行 sql 查询时报错： 
 
-<pre><code>
+```java
 nested exception is org.apache.ibatis.binding.BindingException: Parameter 'ostate' not found. Available parameters are [arg1, arg0, param1, param2] 
-</code><pre>
+```
 
 
 原因：传入多个参数时要使用 `@Param` 注解，否则参数只能有一个 

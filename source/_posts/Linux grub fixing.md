@@ -2,7 +2,7 @@
 title: Linux grub 修复
 categories: Linux
 tags: 
-  - Ubuntu 
+  - linux
   - bug 
 ---
 

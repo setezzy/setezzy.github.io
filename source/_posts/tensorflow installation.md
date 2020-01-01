@@ -2,7 +2,6 @@
 title: TensorFlow安装
 categories: 
   - DeepLearning
-  - Mix
 tags: tensorflow 
 ---
 

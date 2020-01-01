@@ -2,7 +2,6 @@
 title: 基于Keras的数据增广实现
 categories:
   - DeepLearning
-  - Practice
 tags:
   - keras
   - data augmentation
